@@ -1,0 +1,252 @@
+{
+  "brand": {
+    "name": "Open Market Travel",
+    "website": "https://openmarket.travel"
+  },
+  "user": {
+    "name": "María",
+    "surname": "García",
+    "email": "maria.garcia@example.com"
+  },
+  "booking": {
+    "reference": "OMT-2026-00841",
+    "idBooking": "10842",
+    "idBookingExt": "OMT-2026-00841",
+    "idBookingDmc": "YTO-2026-0042",
+    "origin": "Madrid (MAD)",
+    "destination": "Cancún (CUN)",
+    "date": "2026-09-14",
+"url": "https://openmarket.travel/booking/OMT-2026-00841",
+    "status": "confirmed",
+    "bookingmodel": "standard",
+    "paymentmodel": "100",
+    "query": { "code": "TM-001" },
+    "observations": { "observations": "Cliente solicita habitación tranquila." },
+    "dmc": {
+      "code": "YTO",
+      "name": "Yourttoo",
+      "currency": { "symbol": "€" }
+    },
+    "products": [
+      { "name": "México Luxury Escape", "code": "MX-LE-2026", "title_es": "México Luxury Escape", "title_en": "México Luxury Escape", "categoryname": { "label_en": "Beach", "label_es": "Playa" } }
+    ],
+    "createdOn": ISODate("2026-09-01T09:00:00"),
+    "dates": {
+      "start": {
+        "day": 14,
+        "monthname_en": "September",
+        "monthname_es": "Septiembre",
+        "year": 2026
+      }
+    },
+    "paxes": [
+      {
+        "slug": "p1",
+        "title": "Mr",
+        "name": "John",
+        "lastname": "Doe",
+        "birthdate": "1990-01-15",
+        "documentyype": "PP",
+        "documenttype": "PP",
+        "holder": true,
+        "country": { "name": "Spain", "countrycode": "ES", "name_en": "Spain", "label_en": "Spain", "label_es": "España", "slug": "es" },
+        "documentnumber": "X1234567",
+        "passportfile": { "url": "https://www.example.com/files/passport-john.pdf" }
+      },
+      {
+        "slug": "p2",
+        "title": "Mrs",
+        "name": "Jane",
+        "lastname": "Doe",
+        "birthdate": "1992-05-20",
+        "documentyype": "PP",
+        "documenttype": "PP",
+        "country": { "name": "France", "countrycode": "FR", "label_en": "France", "label_es": "Francia", "slug": "fr" },
+        "documentnumber": "Y7654321",
+        "passportfile": { "url": "https://exodusstorage.eu/files/passport-jane.pdf" }
+      },
+      {
+        "slug": "p3",
+        "title": "Mr",
+        "name": "Bob",
+        "lastname": "Smith",
+        "birthdate": "1985-11-02",
+        "documentyype": "PP",
+        "documenttype": "PP",
+        "country": { "name": "Germany", "countrycode": "DE", "slug": "de" },
+        "documentnumber": "Z1122334"
+      }
+    ],
+    "rooms": [
+      { "name": "double", "roomcode": "DBL", "paxlist": ["p1", "p2"] },
+      { "name": "single", "roomcode": "SGL", "paxlist": ["p3"] }
+    ],
+    "roomDistribution": [
+      { "paxList": [ { "lastName": "Doe", "name": "John" }, { "lastName": "Doe", "name": "Jane" } ] },
+      { "paxList": [ { "lastName": "Smith", "name": "Bob" } ] }
+    ],
+    "features": {
+      "honeymoon": true
+    },
+    "customerContact": "agencias@yourttoo.com",
+    "affiliate": {
+      "name": "YTO",
+      "code": "YTO",
+      "company": { "name": "Yourttoo" }
+    },
+    "meetingdata": "Hotel lobby at 10:00",
+    "signin": {
+      "name": "John",
+      "lastname": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "+34 600 123 456"
+    },
+    "pricing": {
+      "amount": 1249.5,
+      "currency": { "symbol": "€" }
+    },
+    "payments": [
+      { "amount": 499.8, "paymenttarget": "affiliate", "transferid": "TR-2026-0041", "receiptnumber": "RC-2026-0041", "date": ISODate("2026-08-10T12:00:00"), "paymentmethod": "Tarjeta de crédito" }
+    ],
+    "price": {
+      "currency": { "symbol": "€" },
+      "totalNetPrice": 1499,
+      "segments": {
+        "tour": { "totalNetPrice": 1200, "totalProviderPrice": 1100, "providerCurrency": "€" },
+        "extra": { "totalNetPrice": 149, "totalProviderPrice": 129, "providerCurrency": "€" },
+        "flight": { "totalNetPrice": 150, "totalProviderPrice": 140, "providerCurrency": "€" }
+      },
+      "bookingPriceItems": [
+        { "quantity": 2, "name": "Doble", "agency": { "unitPriceBeforeMarkup": 525 } },
+        { "quantity": 1, "name": "Individual", "agency": { "unitPriceBeforeMarkup": 449 } }
+      ]
+    },
+    "breakdown": {
+      "provider": { "net": 1249.5 }
+    },
+    "dmcobservations": "Solicitan menú vegetariano para todos los pasajeros.",
+    "extras": [
+      {
+        "saveas": "Excursión a Tulum",
+        "city": { "label_en": "Cancún" },
+        "nights": { "extra": 2 },
+        "behaviour": { "name": "excursion" }
+      },
+      {
+        "saveas": "Seguro opcional",
+        "city": { "label_en": "Cancún" },
+        "behaviour": { "name": "insurance-optional" }
+      }
+    ],
+    "timezone": {
+      "offset": -120
+    },
+    "services": [],
+    "transfers": [
+      {
+        "active": false,
+        "date": ISODate("2026-09-14T10:30:00"),
+        "hour": "10:30",
+        "flightnumber": "IB123",
+        "notes": "Llegada"
+      }
+    ]
+  },
+  "product": {
+    "name": "Riviera Maya",
+    "title_es": "Riviera Maya",
+    "title_en": "Riviera Maya",
+    "categoryname": { "label_en": "Beach", "label_es": "Playa" },
+    "itinerarylength": 7,
+    "admintsnotes": "Confirmar menús vegetarianos.",
+    "included": {
+      "arrivaltransfer": true,
+      "departuretransfer": false,
+      "departurehoteltransfer": false,
+      "arrivalhoteltransfer": false
+    }
+  },
+  "products": [
+    {
+      "name": "México Luxury Escape",
+      "code": "MX-LE-2026",
+      "itinerary": { "length": 7 },
+      "categoryname": { "label_en": "Beach", "label_es": "Playa" }
+    }
+  ],
+  "rooms": [
+    { "roomcode": "DBL" },
+    { "roomcode": "SGL" }
+  ],
+  "total": 1249.5,
+  "role": "admin",
+  "modification": "Cambio de fecha de salida a 20/09/2026",
+  "affiliate": {
+    "name": "YTO",
+    "code": "YTO",
+    "company": { "name": "Yourttoo" },
+    "contact": {
+      "lastname": "García",
+      "firstname": "María",
+      "bookingContact": { "email": "maria@agencia-sol.com" }
+    }
+  },
+"idBooking": "10842",
+  "idBookingExt": "OMT-2026-00841",
+  "paymentmodel": "100",
+  "payments": [ { "amount": 499.8 } ],
+  "url": "https://openmarket.travel/booking/OMT-2026-00841",
+  "content": {
+    "from": {
+      "name": "Equipo Yourttoo",
+      "avatarimg": "http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/avatar.png"
+    },
+    "message": "Por favor, confirma la recepción de esta reserva."
+  },
+  "request": {
+    "code": "TM-2026-0042",
+    "title": "Sra.",
+    "affiliate": {
+      "company": { "name": "Yourttoo" },
+      "code": "YTO",
+      "contact": {
+        "lastname": "García",
+        "firstname": "María",
+        "bookingContact": { "email": "maria@agencia-sol.com" }
+      }
+    },
+    "traveler": { "firstname": "Ana", "lastname": "López" },
+    "destinations": [ { "city": "Cancún", "country": "México", "fulladdress": "" } ],
+    "whattodo": [ { "label": "Playa" }, { "label": "Cultura" } ],
+    "dates": {
+      "knowingdates": true,
+      "arrival": { "day": 14, "month": 8, "year": 2026 },
+      "duration": 7,
+      "alreadygotflights": false,
+      "flexibility": { "number": 2 },
+      "month": { "monthname": "Septiembre", "monthyear": "2026" },
+      "week": 0
+    },
+    "hosting": {
+      "lowcosthotels": false,
+      "standarhotels": true,
+      "superiorhotels": true,
+      "charmhotels": false,
+      "luxuryhotels": false,
+      "hostingKindNotes": "Cerca de la playa"
+    },
+    "roomDistribution": [
+      { "roomType": { "roomCode": "double" }, "paxList": [ { "age": 32 }, { "age": 30 } ] },
+      { "roomType": { "roomCode": "single" }, "paxList": [ { "age": 10 } ] }
+    ],
+    "group": null,
+    "additionalinfo": {
+      "trip": "privatetrip",
+      "needs": "rentacar",
+      "guide": { "included": true, "language": { "spanish": true, "english": true, "french": false, "german": false, "italian": false, "portuguese": false } },
+      "regimen": "hb",
+      "description": "Sin preferencias especiales"
+    },
+    "budget": { "cost": 1249.5, "currency": { "symbol": "€" } }
+  }
+}

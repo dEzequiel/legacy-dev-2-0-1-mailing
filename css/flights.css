@@ -1,0 +1,357 @@
+﻿
+.down-sep-sm {
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.down-sep {
+    margin-bottom: 50px;
+}
+
+.airline-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.op-fly .op_padding_left {
+    padding-left: 12px;
+}
+
+.fix-form {
+
+    overflow: auto;
+}
+
+.op-fly .sep {
+    margin-bottom: 20px;
+}
+
+.op-fly .mid-width {
+    width: 50%;
+}
+
+.op-fly .max {
+    width: 100%;
+}
+
+.op-fly .sp {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.op-fly .fly-data {
+
+}
+
+.op-fly .margenes {
+
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.op-fly .fly-data .sup-info {
+    padding: 0;
+    overflow: auto;
+    background-color: #f1f1f1;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 15px;
+}
+
+.op-fly .fly-data .price {
+    background-color: #FF5F59;
+    float: left;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.aerolineas .filter input[type="checkbox"]:checked + label {
+    background-color: white;
+    color: #309FD3;
+}
+
+.aerolineas .filter input[type="checkbox"] + label img {
+    margin-right: 15px;
+}
+
+.aerolineas .filter input[type="checkbox"]:checked + label i {
+    color: #309FD3;
+}
+
+.day-prepare {
+    text-align: center;
+    display: block;
+
+}
+
+.texto_titulo_derecha{
+
+    color: #2186CB;
+    text-decoration: none
+}
+
+@media (min-width: 769px) {
+    .op-fly .fly-data .dat {
+        text-align: right;
+    }
+}
+
+.op-fly .fly-data .sub-price {
+    color: black;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.op-fly .fly-data .soft {
+    color: white;
+}
+
+.op-fly .fly-data .strong {
+    color: black;
+    font-weight: 700;
+}
+
+.op-fly .fly-data .small {
+    font-size: 13px;
+}
+
+.op-fly .fly-data .quick-view .row {
+    margin-top: 7px;
+}
+
+.op-fly .vuelos {
+
+}
+
+.op-fly .vuelos table {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.op-fly .vuelos .soft {
+    font-weight: 300;
+}
+
+.op-fly .vuelos table .title {
+    border-bottom: 1px solid #999999;
+}
+
+.op-fly .vuelos table th {
+    padding: 5px 0;
+}
+
+.op-fly .vuelos table tr {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .op-fly .vuelos table .back th {
+        width: 100%;
+        display: block;
+        padding: 5px 15px;
+    }
+
+    span.visible-xs {
+        display: inline !important;
+    }
+
+    .op-fly .vuelos table .back .hour {
+        font-weight: 100;
+    }
+
+    .op-fly .vuelos table .back .hour span {
+        font-weight: 900;
+    }
+}
+
+.op-fly .vuelos table th.empty {
+    padding: 3px 0;
+}
+
+.op-fly .vuelos table .cod > img {
+    margin-right: 5px;
+}
+
+.op-fly .vuelos table .back {
+    background-color: #f1f1f1;
+}
+
+.op-fly .vuelos table .back.ckecked {
+    background-color: #ffcfcd;
+}
+
+
+
+.sec-fly .modal-body {
+    padding: 10px 20px;
+}
+.sec-fly .btn {
+    background-color: #2186CB;
+    color: white;
+    padding: 6px 20px;
+}
+.sec-fly .fly-info {
+    padding: 15px 0;
+}
+
+@media (min-width: 769px) {
+    .op-fly .vuelos table .name {
+        width: 160px;
+        padding-left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .op-fly .vuelos table .check {
+        border-left: 5px solid #999999;
+        padding-left: 5px;
+        padding-right: 10px;
+    }
+
+    .op-fly .vuelos table .img-center > img {
+        margin: 0;
+        display: inline-block;
+    }
+
+    .text-center-sm {
+        text-align: center;
+    }
+
+}
+
+.op-fly .vuelos .options-price {
+    text-align: right;
+}
+
+.op-fly .vuelos .options-price .price-bottom {
+    color: #FF5F59;
+    font-weight: 800;
+    font-size: 27px;
+}
+
+.op-fly .vuelos .options-price .data-bottom {
+    font-style: italic;
+    color: #999999;
+}
+
+.op-fly .vuelos .options-price .btn-book {
+    text-decoration: none;
+    background-color: #FF5F59;
+    color: white;
+    padding: 10px 20px;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .op-fly .vuelos .options-price .btn-book {
+        margin-top: 20px;
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .op-fly .vuelos .options-price .btn-book {
+        margin-left: 30px;
+    }
+}
+
+.op-fly .hint {
+    color: #6464D4;
+}
+
+.op-fly .img-info-bar {
+    margin-right: 10px;
+}
+
+.op-fly .modal-body {
+    overflow: auto;
+}
+
+.op-fly .modal-body .fly-info {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    padding: 6px 0;
+}
+
+.op-fly .modal-body .title {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.op-fly .modal-body .strong,
+.op-fly span.strong {
+    font-weight: 700;
+}
+
+.op-fly .modal-body .underline {
+    text-decoration: underline;
+}
+
+.op-fly .modal-header h3 {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.op-fly .modal-body .right-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px 0;
+}
+
+.op-fly .modal-body img {
+    margin-right: 10px;
+}
+
+.op-fly .modal-body .data {
+    margin-bottom: 7px;
+}
+
+.op-fly .step-fly {
+    background-color: #f1f1f1;
+    padding: 5px;
+}
+
+.op-fly .step-fly img {
+    float: left;
+    margin-right: 15px;
+}
+
+.op-fly .step-fly .soft {
+    font-weight: 300;
+}
+
+@media (min-width: 769px) {
+    .op-fly .step-fly {
+        position: relative;
+        left: 12px;
+    }
+}
+
+
+    .scaletable {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .itineraryfloat {
+        float: left;
+        position: absolute;
+    }
+
+    .itineraryrow {
+        height: 26px;
+    }
+
+    .scaleplane {
+        margin-left: -16px;
+        margin-right: 7px;
+    }

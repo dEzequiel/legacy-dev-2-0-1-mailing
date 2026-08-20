@@ -1,0 +1,68 @@
+{% extends '../layouts/yto-layout.njk' %}
+
+{% block body %}
+<tr>
+    <td align="center" valign="top">
+        <!-- BEGIN HEADER // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+            <tr>
+                <td valign="top" class="headerContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                    <tbody class="mcnTextBlockOuter">
+                        <tr>
+                            <td valign="top" class="mcnTextBlockInner">
+
+                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+                                <tbody>
+                                    <tr>
+                                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-left: 18px;">
+                                            &nbsp;
+                                            <h1>{{ t('booking_reference', { id: booking.idBooking }) }}</h1>
+                                            <br>
+                                            <p><strong>{{ t('your_file') }}</strong> {{ booking.idBookingDmc }}</p>
+                                            <p><strong>{{ t('program') }}: </strong> {{ booking.products[0].name }} </p>
+                                            <p><strong>{{ t('travel_date') }}: </strong> {{ booking.dates.start.day }} {{ booking.dates.start.monthname_en }} {{ booking.dates.start.year }} </p>
+                                            {% set totalpax = booking.paxes.length %}
+                                            <p><strong>{{ t('paxes') }}: {{ totalpax }} </strong></p>
+											<p>{% for pax in booking.paxes %}
+													<strong >{{ loop.index }}.</strong>
+													<span >
+													  <b>{{ t('name') }}: </b> {{ pax.name }},  
+													  <b>{{ t('last_name') }}: </b> {{ pax.lastname }}
+													  {% if pax.passportfile != null and pax.passportfile.url != null and pax.passportfile.url != '' %}
+                                                        {% if pax.passportfile.url.indexOf('exodusstorage') < 0 %}
+														{{ t('passport_ok') }} <a target="_blank" href="{{ pax.passportfile.url }}"> {{ t('download') }}</a>
+                                                        {% else %}
+                                                        {{ t('passport_ok') }} <a target="_blank" href="https://www.yourttoo.com/download/dmc-file?url={{ pax.passportfile.url }}"> {{ t('download') }}</a>
+                                                        {% endif %}
+													  {% else %}
+														{{ t('no_passport') }}
+													  {% endif %}
+													</span>
+													<br />
+											{% endfor %}</p>
+                                        </td>
+                                    </tr>
+									<tr>
+										<td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+											<p class="pre-text">
+												{{ t('passport_copies_note') }}
+											</p>
+										</td>
+									</tr>
+                                </tbody>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </td>
+            </tr>
+        </table>
+        <!-- // END HEADER -->
+    </td>
+</tr>
+
+
+{% endblock %}

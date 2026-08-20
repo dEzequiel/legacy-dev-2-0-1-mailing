@@ -1,0 +1,41 @@
+{% extends '../layouts/yto-layout.njk' %}
+
+{% block body %}
+<tr>
+    <td align="center" valign="top">
+        <!-- BEGIN HEADER // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
+            <tr>
+                <td valign="top" class="headerContainer" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                    <h1>{{ t('new_booking', { id: booking.idBooking }) }}</h1>
+                    <p><strong>{{ t('dear_colleagues') }}</strong></p>
+                    <p>{{ t('booking_details_intro') }}</p>
+                </td>
+            </tr>
+        </table>
+        <!-- // END HEADER -->
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="top">
+        <!-- BEGIN BODY // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
+            <tr>
+                <td valign="top" class="bodyContainer">
+                    {% include "../partials/booking.njk" %}
+
+                    <!-- BEGIN Call to action -->
+                    {% set ca = {txt: t('acknowledge_booking'), url: 'https://yourttoo.com/acknowledgebooking?code=' + booking.idBooking + '&dmc=' + booking.dmc.code} %}
+                    {% include "../partials/call-to-action.njk" %}
+                    <!-- END Call to action -->
+
+                    {% include "../partials/check-booking.njk" %}
+
+                    {% include "../partials/yto-contact.njk" %}
+                </td>
+            </tr>
+        </table>
+        <!-- // END BODY -->
+    </td>
+</tr>
+{% endblock %}

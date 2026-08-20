@@ -1,0 +1,16 @@
+{% extends '../layouts/yto-layout.njk' %}
+{% block body %}
+{% set dmc = booking.dmc %}
+{% set product = booking.products[0] %}
+{% set products = booking.products %}
+    <tr>
+      <td align="center" valign="top">
+        {% include '../partials/wl-booking-summary.njk' %}
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        {% include '../partials/wl-booking.njk' %}
+      </td>
+    </tr>
+{% endblock %}

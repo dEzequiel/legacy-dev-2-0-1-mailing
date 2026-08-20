@@ -1,0 +1,219 @@
+
+{% set b = enrichBooking(booking) %}
+{% set extranights = 0 %}
+{% if booking.extras != null and booking.extras.length > 0 %}
+    {% for extra in booking.extras %}
+        {% if extra.nights and extra.nights.extra %}
+            {% set extranights = extranights + extra.nights.extra %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('booking_reference') }}: </b>{{ booking.idBooking }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('tour_name') }}: </b>{{ product.name }}
+                            </td>
+                        </tr>
+                        {% if product.categoryname.label_en %}
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('category') }}: </b>{{ product.categoryname.label_en }}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('travel_date') }}: </b>{{ booking.dates.start.day }} {{ booking.dates.start.monthname_en }} {{ booking.dates.start.year }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('duration') }}: </b>{{ product.itinerarylength }} {{ t('days') }}
+                                {% if extranights > 0 %}
+                                (+ {{ t('extra_nights', { n: extranights }) }})
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('travelers') }}: </b>{{ booking.paxes.length }}
+                                {% if booking.features != null and booking.features.honeymoon == true %}
+                                {{ t('honeymooners') }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('room_types') }}</b><br />
+                                {% if b.roomCounts.single > 0 %}{{ t('single_rooms', { n: b.roomCounts.single }) }}{% endif %}
+                                {% if b.roomCounts.double > 0 %}{{ t('double_rooms', { n: b.roomCounts.double }) }}{% endif %}
+                                {% if b.roomCounts.twin > 0 %}{{ t('twin_rooms', { n: b.roomCounts.twin }) }}{% endif %}
+                                {% if b.roomCounts.triple > 0 %}{{ t('triple_rooms', { n: b.roomCounts.triple }) }}{% endif %}
+                                {% if b.roomCounts.quad > 0 %}{{ t('quad_rooms', { n: b.roomCounts.quad }) }}{% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+    <tbody class="mcnCaptionBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextContent" style="padding: 9px 18px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                    <tr class="bg-soft" style="font-size: 12px;">
+                        <th>{{ t('pax_title') }}</th>
+                        <th>{{ t('last_name') }}</th>
+                        <th>{{ t('name') }}</th>
+                        <th>{{ t('birthdate') }}</th>
+                        <th>{{ t('nationality') }}</th>
+                        <th>{{ t('document_number') }}</th>
+                        <th>{{ t('room') }}</th>
+                    </tr>
+                    {% for pax in booking.paxes %}
+                    <tr class="itineraryrow title" style="font-size: 11px;">
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.title or pax.gender }}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.lastname }}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.name }}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{% if pax.birthdate %}{{ pax.birthdate | date('Y-m-d') }}{% endif %}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.country.name_en or pax.country.name_es or pax.country.label_en or pax.country.label_es or pax.country.slug }}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.documentnumber }}</td>
+                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.room }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="7">
+                            <strong>
+                                <hr />
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="mcnTextContent" style="padding-left:18px;">
+                <b>{{ t('customer_contact') }}: </b>{{ booking.customerContact }}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% if booking.extras != null and booking.extras.length > 0 %}
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock" style="margin-top: 10px;">
+    <tbody class="mcnCaptionBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextContent" style="padding: 9px 18px;">
+                <div>
+                    <b>{{ t('extras_to_add') }}</b><br />
+                    {% for extra in booking.extras %}
+                        {% if extra.behaviour.name != 'insurance-optional' %}
+                        <span> - {{ extra.saveas }} ({{ extra.city.label_en }})</span>{% if extra.nights and extra.nights.extra %} ({{ extra.nights.extra }} {{ t('nights') }}){% endif %}<br />
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+{% if booking.dmcobservations %}
+<br />
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="margin-top: 10px;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('observations') }}</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                {{ booking.dmcobservations }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+{% endif %}
+
+{% if (product.included.arrivaltransfer or product.included.departuretransfer or product.included.departurehoteltransfer or product.included.arrivalhoteltransfer) and (booking.transfers != null and booking.transfers.length > 0) %}
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="margin-top: 10px;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('pickup_dropoff') }}</b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+    <tbody class="mcnCaptionBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextContent" style="padding: 9px 18px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                    <tr class="bg-soft" style="font-size: 12px;">
+                        <th>{{ t('date') }}</th>
+                        <th>{{ t('time') }}</th>
+                        <th>{{ t('flight_number') }}</th>
+                        <th>{{ t('observations') }}</th>
+                    </tr>
+                    {% for transfer in booking.transfers %}
+                        {% if transfer.active %}
+                            {% set transferdate = adjustForTimezone(transfer.date, booking.timezone.offset) %}
+                            <tr class="itineraryrow title" style="font-size: 11px;">
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ pad(transferdate.getDate(), 2) }}/{{ pad(transferdate.getMonth() + 1, 2) }}/{{ transferdate.getFullYear() }}</td>
+                                {% if booking.services != null and booking.services.length > 0 %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ pad(transferdate.getHours(), 2) }}:{{ pad(transferdate.getMinutes(), 2) }}</td>
+                                {% else %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.hour }}</td>
+                                {% endif %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.flightnumber }}</td>
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.notes }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td colspan="8">
+                            <strong>
+                                <hr />
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}

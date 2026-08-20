@@ -1,0 +1,19 @@
+{
+  "company": {
+    "name": "Agencia de Viajes Sol",
+    "legalname": "Sol Viajes S.L.",
+    "phone": "+34 910 123 456",
+    "location": {
+      "fulladdress": "Calle Mayor 12",
+      "stateorprovince": "Madrid",
+      "pc": "28013",
+      "country": "España"
+    }
+  },
+  "contact": {
+    "firstname": "María",
+    "lastname": "García",
+    "position": "Directora de Cuenta",
+    "email": "maria@agencia-sol.com"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "mailing-preview",
+  "private": true,
+  "description": "Render local de plantillas swig con datos mockeados",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nunjucks": "^3.2.4",
+    "swig": "^1.4.2"
+  }
+}

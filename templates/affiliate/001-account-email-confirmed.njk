@@ -1,0 +1,84 @@
+{% extends '../layouts/yto-layout.njk' %}
+
+{% block body %}
+<tr>
+    <td align="center" valign="top">
+        <!-- BEGIN HEADER // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+            <tr>
+                <td valign="top" class="headerContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                <tbody class="mcnTextBlockOuter">
+                    <tr>
+                        <td valign="top" class="mcnTextBlockInner">
+                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                                <tbody>
+                                <tr>
+                                    <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                                        <h1 class="null"><br>{{ t('welcome_yourttoo') }}</h1>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                </td>
+            </tr>
+        </table>
+        <!-- // END HEADER -->
+    </td>
+</tr>
+<tr>
+    <td align="center" valign="top">
+        <!-- BEGIN BODY // -->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
+            <tr>
+                <td valign="top" class="bodyContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+                <tbody class="mcnTextBlockOuter">
+                    <tr>
+                        <td valign="top" class="mcnTextBlockInner">                
+                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                                <tbody>
+                                    <tr>                        
+                                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                                            <p>{{ t('registration_approved') }}</p>
+
+                                            <p>{{ t('company_data') }}</p>
+                                            <p>{{ t('commission_fee') }}</p>
+                                            <p>{{ t('custom_logo') }}</p>
+
+                                            <p>{{ t('agreement_reminder') }}</p>
+                                            <br><br>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+
+                <!-- BEGIN Call to action
+                http://www.yourttoo.com
+                 -->
+                {% set ca = { txt: t('go_to_yourttoo'), url: url } %}
+                {% include "../partials/call-to-action.njk" %}
+                <!-- END Call to action -->
+
+
+
+                <!-- BEGIN message // -->
+                {% include "../partials/yto-team-thanks-message.njk" %}
+                {% include "../partials/no-reply-email.njk" %}
+                <!-- // END message -->
+
+                </td>
+            </tr>
+        </table>
+        <!-- // END BODY -->
+    </td>
+</tr>
+{% endblock %}
