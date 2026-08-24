@@ -1,21 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 const express = require('express');
-const swig = require('swig');
 const nunjucks = require('nunjucks');
 
 const ROOT = path.resolve(__dirname, '..');
 const PORT = process.env.PORT || 4320;
 
 const app = express();
-
-// ---------- motor swig ----------
-swig.setDefaults({ cache: false });
-swig.setFilter('numberFractions', (v) => {
-  const n = Number(v);
-  if (isNaN(n)) return v;
-  return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-});
 
 // ---------- motor nunjucks ----------
 // loader que resuelve extends/include como swig: primero relativo a la plantilla padre, luego desde ROOT
@@ -102,8 +93,10 @@ function buildContext() {
 }
 
 // ---------- indice de plantillas ----------
-function listTemplates() {
-  const dir = path.join(ROOT, 'templates');
+const SECTIONS = ['admin', 'affiliate', 'dmc', 'whitelabel'];
+
+function listTemplates(section) {
+  const dir = path.join(ROOT, 'templates', section || '');
   const out = [];
   (function walk(d) {
     for (const entry of fs.readdirSync(d, { withFileTypes: true })) {
@@ -133,62 +126,37 @@ function createT(lang) {
 
 // ---------- pagina indice ----------
 app.get('/', (req, res) => {
-  const templates = listTemplates();
+  const section = SECTIONS.includes(req.query.section) ? req.query.section : '';
   const lang = req.query.lang || 'es';
   const langOptions = Object.keys(i18n)
     .map((l) => `<option value="${l}"${l === lang ? ' selected' : ''}>${l}</option>`)
     .join('');
-  const items = templates
+  const menu = ['', ...SECTIONS]
+    .map((s) => {
+      const label = s || 'todos';
+      const active = s === section ? ' active' : '';
+      return `<a class="cat${active}" href="?section=${encodeURIComponent(s)}&lang=${encodeURIComponent(lang)}">${label}</a>`;
+    })
+    .join('');
+  const items = listTemplates(section)
     .map((t) => {
       const label = t.replace(/\.html\.swig$|\.swig$|\.njk$/, '');
       return `<tr>
-        <td><a href="/render?tpl=${encodeURIComponent(t)}" target="view">${t}</a></td>
-        <td><a href="/swig?tpl=${encodeURIComponent(t)}" target="view">swig</a></td>
-        <td><a href="/njk?tpl=${encodeURIComponent(t)}&lang=${encodeURIComponent(lang)}" target="view">nunjucks</a></td>
+        <td><a href="/render?tpl=${encodeURIComponent(t)}&lang=${encodeURIComponent(lang)}" target="view">${t}</a></td>
       </tr>`;
     })
     .join('\n');
-  res.send(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Preview emails</title>
-<style>
-  body { font: 13px/1.4 -apple-system, "Segoe UI", sans-serif; display: flex; height: 100vh; margin: 0; }
-  aside { width: 340px; overflow-y: auto; background: #1e2530; color: #cfd8e3; padding: 10px; }
-  h1 { font-size: 14px; color: #fff; padding: 6px 4px 10px; }
-  select { width: 100%; padding: 5px 8px; margin: 0 0 10px; background: #2c3646; color: #fff; border: 1px solid #3a4657; border-radius: 4px; }
-  table { width: 100%; border-collapse: collapse; }
-  td { padding: 3px 6px; border-bottom: 1px solid #2c3646; }
-  a { color: #cfd8e3; text-decoration: none; }
-  td a:first-child { font-weight: 600; }
-  a:hover { color: #fff; }
-  iframe { flex: 1; border: 0; background: #fff; }
-</style></head><body>
-<aside><h1>Preview emails</h1>
-<select id="lang" title="Idioma">
-  ${langOptions}
-</select>
-<table>${items}</table></aside>
-<iframe name="view"></iframe>
-<script>
-  document.getElementById('lang').addEventListener('change', (e) => {
-    location.search = '?lang=' + encodeURIComponent(e.target.value);
-  });
-</script>
-</body></html>`);
-});
-
-// ---------- render con swig ----------
-app.get('/swig', (req, res) => {
-  const tpl = req.query.tpl || '';
-  const abs = path.resolve(ROOT, tpl);
-  if (!abs.startsWith(ROOT) || !fs.existsSync(abs)) return res.status(404).send('Plantilla no encontrada');
-  try {
-    res.type('html').send(swig.renderFile(abs, { ...ctx, SUBJECT: `[swig] ${path.basename(tpl)}` }));
-  } catch (err) {
-    res.status(500).send(`<pre style="color:#b00;font:13px monospace;padding:20px;white-space:pre-wrap">Error swig en ${tpl}\n\n${err.stack || err}</pre>`);
-  }
+  const html = fs
+    .readFileSync(path.join(__dirname, 'index.html'), 'utf8')
+    .replace('__LANG_OPTIONS__', langOptions)
+    .replace('__MENU__', menu)
+    .replace('__ITEMS__', items)
+    .replace('__SECTION__', encodeURIComponent(section));
+  res.send(html);
 });
 
 // ---------- render con nunjucks ----------
-app.get('/njk', (req, res) => {
+app.get('/render', (req, res) => {
   const tpl = req.query.tpl || '';
   const abs = path.resolve(ROOT, tpl);
   if (!abs.startsWith(ROOT) || !fs.existsSync(abs)) return res.status(404).send('Plantilla no encontrada');
@@ -201,4 +169,4 @@ app.get('/njk', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Preview en http://localhost:${PORT}  (swig y nunjucks)`));
+app.listen(PORT, () => console.log(`Preview en http://localhost:${PORT}  (nunjucks)`));

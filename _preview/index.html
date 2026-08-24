@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Preview emails</title>
+<style>
+  body { font: 13px/1.4 -apple-system, "Segoe UI", sans-serif; display: flex; height: 100vh; margin: 0; }
+  aside { width: 340px; overflow-y: auto; background: #1e2530; color: #cfd8e3; padding: 10px; }
+  h1 { font-size: 14px; color: #fff; padding: 6px 4px 10px; }
+  .cats { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+  .cats a { padding: 4px 10px; border: 1px solid #3a4657; border-radius: 12px; font-size: 12px; }
+  .cats a.active { background: #3a6ea5; border-color: #3a6ea5; color: #fff; }
+  select { width: 100%; padding: 5px 8px; margin: 0 0 10px; background: #2c3646; color: #fff; border: 1px solid #3a4657; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 3px 6px; border-bottom: 1px solid #2c3646; }
+  a { color: #cfd8e3; text-decoration: none; }
+  td a:first-child { font-weight: 600; }
+  a:hover { color: #fff; }
+  iframe { flex: 1; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<aside><h1>Preview emails</h1>
+<select id="lang" title="Idioma">
+  __LANG_OPTIONS__
+</select>
+<nav class="cats">__MENU__</nav>
+<table>__ITEMS__</table></aside>
+<iframe name="view"></iframe>
+<script>
+  document.getElementById('lang').addEventListener('change', (e) => {
+    location.search = '?section=__SECTION__&lang=' + encodeURIComponent(e.target.value);
+  });
+</script>
+</body>
+</html>
