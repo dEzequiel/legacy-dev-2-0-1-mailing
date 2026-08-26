@@ -45,8 +45,8 @@
   "flight_number": "Flight number",
   "route": "Route",
   "travel_date": "Travel date",
-  "check_booking_title": "Check your booking",
-  "check_booking_text": "Remember this is an instant confirmation booking. Please ensure you enter the details into your reservation system as this booking has been confirmed to our customer. If you have any questions, pls contact us.",
+  "check_booking_title": "Please double-check these details.",
+  "check_booking_text": "This booking has already been confirmed to our clients. Please make sure that all the details are correctly entered into your booking system. If you have any questions, please do not hesitate to contact us.",
   "view_booking": "View booking",
   "booking_dmc_quotation_booked": "Your Quotation for the Tailor Made request has been booked",
   "product": "Product",
@@ -260,5 +260,6 @@
   "team": "yourttoo.com team",
   "general_terms": "General terms",
   "legal_notice": "Legal notice",
-  "cookie_policy": "Cookie policy"
+  "cookie_policy": "Cookie policy",
+  "agency_email": "agencias@yourttoo.com"
 }

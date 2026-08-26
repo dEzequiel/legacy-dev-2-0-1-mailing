@@ -45,8 +45,8 @@
   "flight_number": "Nº de vuelo",
   "route": "Trayecto",
   "travel_date": "Fecha de viaje",
-  "check_booking_title": "Consulta tu reserva",
-  "check_booking_text": "Recuerda que esta es una reserva de confirmación instantánea. Asegúrate de introducir los detalles en tu sistema de reservas, ya que esta reserva ha sido confirmada a nuestro cliente. Si tienes alguna pregunta, ponte en contacto con nosotros.",
+  "check_booking_title": "Por favor, verifique detenidamente estos datos.",
+  "check_booking_text": "Esta reserva ya ha sido confirmada a nuestros clientes. Por favor, asegúrese de que todos los datos se hayan introducido correctamente en su sistema de reservas. Si tiene alguna pregunta, no dude en ponerse en contacto con nosotros.",
   "view_booking": "Ver reserva",
   "booking_dmc_quotation_booked": "Tu presupuesto para la solicitud a medida ha sido reservado",
   "product": "Producto",
@@ -260,5 +260,6 @@
   "team": "equipo yourttoo.com",
   "general_terms": "Condiciones generales",
   "legal_notice": "Aviso Legal",
-  "cookie_policy": "Política de Cookies"
+  "cookie_policy": "Política de Cookies",
+  "agency_email": "agencias@yourttoo.com"
 }
