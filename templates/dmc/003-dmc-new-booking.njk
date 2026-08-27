@@ -24,12 +24,13 @@
                 <td valign="top" class="bodyContainer">
                     {% include "../partials/booking.njk" %}
 
+                    {% include "../partials/check-booking.njk" %}
+
                     <!-- BEGIN Call to action -->
                     {% set ca = {txt: t('acknowledge_booking'), url: 'https://yourttoo.com/acknowledgebooking?code=' + booking.idBooking + '&dmc=' + booking.dmc.code} %}
                     {% include "../partials/call-to-action.njk" %}
                     <!-- END Call to action -->
 
-                    {% include "../partials/check-booking.njk" %}
 
                 </td>
             </tr>
