@@ -8,6 +8,29 @@ const PORT = process.env.PORT || 4320;
 
 const app = express();
 
+// ---------- autenticacion basica (dialogo nativo del navegador) ----------
+const AUTH_USER = 'yourttoo';
+const AUTH_PASS = '&ourttoo';
+
+function requireAuth(req, res, next) {
+  const header = req.headers['authorization'] || '';
+  const b64 = header.startsWith('Basic ') ? header.slice(6) : '';
+  let user = '';
+  let pass = '';
+  if (b64) {
+    const decoded = Buffer.from(b64, 'base64').toString('utf8');
+    const sep = decoded.indexOf(':');
+    if (sep >= 0) {
+      user = decoded.slice(0, sep);
+      pass = decoded.slice(sep + 1);
+    }
+  }
+  if (user === AUTH_USER && pass === AUTH_PASS) return next();
+  res.setHeader('WWW-Authenticate', 'Basic realm="Preview emails"');
+  res.status(401).send('Acceso denegado: credenciales requeridas.');
+}
+app.use(requireAuth);
+
 // ---------- motor nunjucks ----------
 // loader que resuelve extends/include como swig: primero relativo a la plantilla padre, luego desde ROOT
 class SwigLikeLoader extends nunjucks.Loader {

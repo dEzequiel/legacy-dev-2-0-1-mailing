@@ -21,13 +21,8 @@
                                         {{ t('expediente') }} {{ booking.affiliate.company.name }}: <strong>{{ booking.idBookingExt }}</strong><br>
                                         </p>
                                         </td>
-                                    </tr>
-                                    <tr>                                    
-                                        <td valign="top" class="mcnTextBlockInner">
-                                            {% include "../partials/booking.njk" %}
-                                        </td>
-                                    </tr>
-                                </tbody>
+                    </tr>
+                        </tbody>
                                 </table>
 
                             </td>
@@ -68,12 +63,6 @@
                                {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
                                 {% include "../partials/call-to-action.njk" %}
                             </p>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                            {% include "../partials/no-reply-email.njk" %}
                         </td>
                     </tr>
                         </tbody>
