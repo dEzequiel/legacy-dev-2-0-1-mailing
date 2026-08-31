@@ -136,6 +136,38 @@
         "saveas": "Seguro opcional",
         "city": { "label_en": "Cancún" },
         "behaviour": { "name": "insurance-optional" }
+      },
+      {
+        "saveas": "Tour en catamarán por Isla Mujeres",
+        "city": { "label_en": "Isla Mujeres" },
+        "nights": { "extra": 1 },
+        "behaviour": { "name": "excursion" }
+      },
+      {
+        "saveas": "Cena romántica en la playa",
+        "city": { "label_en": "Cancún" },
+        "behaviour": { "name": "experience" }
+      },
+      {
+        "saveas": "Escapada a Chichén Itzá",
+        "city": { "label_en": "Chichén Itzá" },
+        "nights": { "extra": 1 },
+        "behaviour": { "name": "excursion" }
+      },
+      {
+        "saveas": "Upgrade a habitación con vista al mar",
+        "city": { "label_en": "Cancún" },
+        "behaviour": { "name": "room-upgrade" }
+      },
+      {
+        "saveas": "Seguro de cancelación",
+        "city": { "label_en": "Cancún" },
+        "behaviour": { "name": "insurance-optional" }
+      },
+      {
+        "saveas": "Snorkel en Xel-Há",
+        "city": { "label_en": "Xel-Há" },
+        "behaviour": { "name": "excursion" }
       }
     ],
     "timezone": {
@@ -144,19 +176,27 @@
     "services": [],
     "transfers": [
       {
-        "active": false,
+        "active": true,
         "date": ISODate("2026-09-14T10:30:00"),
         "hour": "10:30",
         "flightnumber": "IB123",
-        "notes": "Llegada"
+        "notes": "Recogida en el aeropuerto - Llegada"
+      },
+      {
+        "active": true,
+        "date": ISODate("2026-09-21T16:00:00"),
+        "hour": "16:00",
+        "flightnumber": "IB456",
+        "notes": "Traslado al aeropuerto - Salida"
       }
     ]
   },
   "product": {
-    "name": "Riviera Maya",
-    "title_es": "Riviera Maya",
-    "title_en": "Riviera Maya",
+    "name": "Bangkok + Triángulo de Oro Exprés - OFERTA (Turista)",
+    "title_es": "Bangkok + Triángulo de Oro Exprés - OFERTA (Turista)",
+    "title_en": "Bangkok + Triángulo de Oro Exprés - OFERTA (Turista)",
     "categoryname": { "label_en": "Beach", "label_es": "Playa" },
+    "DMC": "Asian Spirit",
     "itinerarylength": 7,
     "admintsnotes": "Confirmar menús vegetarianos.",
     "included": {
