@@ -1,91 +1,63 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
-            <tr>
-                <td valign="top" class="headerContainer">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-
-                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                        <tbody><tr>
-
-                                            <td valign="top" class="mcnTextContent" style="padding: 9px 18px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">
-                                                &nbsp;
-                                                <h1>{{ t('hotels_confirmed', { id: booking.idBooking }) }}</h1>
-                                                <br />
-                                                <h3>{{ t('hotels_confirmed_text') }}</h3>
-                                                <p><strong>{{ t('expediente') }} {{ affiliate.company.name or affiliate.name }}:</strong> {{ booking.idBookingExt }}</p>
-                                                <p><strong>{{ t('program') }} {{ affiliate.company.name or affiliate.name }}:</strong> {{ product['title_' + lang] }} </p>
-                                                <p><strong>{{ t('travel_date') }} {{ affiliate.company.name }}:</strong> {{ booking.dates.start.day }} {{ booking.dates.start.monthname_en }} {{ booking.dates.start.year }} </p>
-                                                <p><strong>{{ t('paxes') }} {{ affiliate.company.name }}: </strong>{{ booking.paxes.length }}</p>
-                                            </td>
-                                        </tr>
-                                    </tbody></table>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN HEADER // -->
+      <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='headerContainer' valign='top'>
+            {% call textBlock('100%') %}
+              <h1>
+                {{ t('hotels_confirmed', { id: booking.idBooking }) }}
+              </h1>
+              <br />
+              <h3>
+                {{ t('hotels_confirmed_text') }}
+              </h3>
+              <br />
+              <strong>{{ t('expediente') }} {{ affiliate.company.name or affiliate.name }}:</strong>
+              {{ booking.idBookingExt }}
+              <br />
+              <strong>{{ t('program') }}:</strong>
+              {{ product['title_' + lang] }}
+              <br />
+              <strong>{{ t('travel_date') }}:</strong>
+              {{ booking.dates.start.day }}
+              {{ booking.dates.start.monthname_en }}
+              {{ booking.dates.start.year }}
+              <br />
+              <strong>{{ t('paxes') }}:</strong>
+              {{ booking.paxes.length }}
+            {% endcall %}
+          </td>
+        </tr>
+      </table>
+      <!-- // END HEADER -->
     </td>
-</tr>
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
-            <tr>
-                <td valign="top" class="bodyContainer">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock">
-                        <tbody class="mcnBoxedTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnBoxedTextBlockInner">
-                                    
-                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextContentContainer">
-                                        <tbody>
-										<tr>
-											<td valign="top" class="mcnBoxedTextBlockInner">
-                                    
-												
-											</td>
-                                        </tr>
-                                    </tbody></table>
-                                    
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+  </tr>
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN BODY // -->
+      <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='bodyContainer' valign='top'>
+            {% call textBlock('100%') %}
+              <br />
+              {% if not ca %}
+                {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
+              {% endif %}
+              {% include "../partials/call-to-action.njk" %}
 
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-                                <br />
-                                    {% if not ca %}
-                                    {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
-                                    {% endif %}
-                                    {% include "../partials/call-to-action.njk" %}
-                                    <!-- END Call to action -->
-
-                                    <!-- BEGIN booking // -->
-                                    {% include "../partials/yto-team-thanks-message.njk" %}
-                                    <!-- // END booking -->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END BODY -->
+              <!-- BEGIN message // -->
+              {% include "../partials/yto-team-thanks-message.njk" %}
+              <!-- // END message -->
+            {% endcall %}
+          </td>
+        </tr>
+      </table>
+      <!-- // END BODY -->
     </td>
-</tr>
+  </tr>
 {% endblock %}

@@ -1,0 +1,58 @@
+{% if (product.included.arrivaltransfer or product.included.departuretransfer or product.included.departurehoteltransfer or product.included.arrivalhoteltransfer) and (booking.transfers != null and booking.transfers.length > 0) %}
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="margin-top: 10px;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('pickup_dropoff') }}</b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+    <tbody class="mcnCaptionBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextContent" style="padding: 9px 18px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                    <tr class="bg-soft" style="font-size: 12px;">
+                        <th>{{ t('date') }}</th>
+                        <th>{{ t('time') }}</th>
+                        <th>{{ t('flight_number') }}</th>
+                        <th>{{ t('observations') }}</th>
+                    </tr>
+                    {% for transfer in booking.transfers %}
+                        {% if transfer.active %}
+                            {% set transferdate = adjustForTimezone(transfer.date, booking.timezone.offset) %}
+                            <tr class="itineraryrow title" style="font-size: 11px;">
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ pad(transferdate.getDate(), 2) }}/{{ pad(transferdate.getMonth() + 1, 2) }}/{{ transferdate.getFullYear() }}</td>
+                                {% if booking.services != null and booking.services.length > 0 %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ pad(transferdate.getHours(), 2) }}:{{ pad(transferdate.getMinutes(), 2) }}</td>
+                                {% else %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.hour }}</td>
+                                {% endif %}
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.flightnumber }}</td>
+                                <td style="white-space: nowrap; padding-right: 10px;">{{ transfer.notes }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td colspan="8">
+                            <strong>
+                                <hr />
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}

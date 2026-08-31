@@ -1,0 +1,59 @@
+
+{% set b = enrichBooking(booking) %}
+{% set extranights = 0 %}
+{% if booking.extras != null and booking.extras.length > 0 %}
+    {% for extra in booking.extras %}
+        {% if extra.nights and extra.nights.extra %}
+            {% set extranights = extranights + extra.nights.extra %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('booking_reference') }}: </b>{{ booking.idBooking }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <strong>{{ t('expediente') }} {{ booking.affiliate.company.name }}:</strong> {{ booking.idBookingExt }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding: 18px 18px 18px;">
+                                <h2>{{ product.name }}</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('travel_date') }}: </b>{{ booking.dates.start.day }} {{ booking.dates.start.monthname_en }} {{ booking.dates.start.year }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('travelers') }}: </b>{{ booking.paxes.length }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mcnTextContent" style="padding-left:18px;">
+                                <b>{{ t('customer_contact') }}: </b>{{ booking.customerContact }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+

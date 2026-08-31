@@ -1,141 +1,77 @@
 {% extends '../layouts/yto-layout.njk' %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+  <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='600'>
+    <tr>
+      <td class='headerContainer' valign='top'>
+        <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+          <tbody class='mcnTextBlockOuter'>
             <tr>
-                <td valign="top" class="headerContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                    <tbody class="mcnTextBlockOuter">
-                        <tr>
-                            <td valign="top" class="mcnTextBlockInner">
+              <td class='mcnTextBlockInner' valign='top'>
 
-                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-                                <tbody>
-                                    <tr>
-                                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                            &nbsp;
-                                            <h1>{{ t('your_booking', { id: booking.idBooking }) }}</h1>
-                                            <br>
-                                            <p><strong>{{ t('expediente') }} {{ affiliate.company.name }}:</strong> {{ booking.idBookingExt }}</p>
-                                            <p><strong>{{ t('program') }} {{ affiliate.company.name }}:</strong> {{ booking.products[0]['title_' + lang] }} </p>
-                                            <p><strong>{{ t('travel_date') }} {{ affiliate.company.name }}:</strong> {{ booking.dates.start.day }} {{ booking.dates.start.monthname_en }} {{ booking.dates.start.year }} </p>
-                                            {% set totalpax = 0 %}
-                                            {% include "../partials/holder-passengers.njk" %}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                </table>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
-    </td>
-</tr>
-
-
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
-            <tr>
-                <td valign="top" class="bodyContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                <tbody class="mcnTextBlockOuter">
+                <table
+                  class='mcnTextContentContainer'
+                  align='left'
+                  border='0'
+                  cellpadding='0'
+                  cellspacing='0'
+                  width='600'
+                >
+                  <tbody>
                     <tr>
-                        <td valign="top" class="mcnTextBlockInner">
-                        <!-- BEGIN booking // -->
-                        {% include "../partials/booking.njk" %}
-                        <!-- // END booking -->
-						
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                                <tbody class="mcnTextBlockOuter">
-                                    <tr>
-                                        <td valign="top" class="mcnTextBlockInner">
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-												<tr>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<h2><b>{{ t('payments_title') }}</b></h2>
-													</td>
-												</tr>
-												<tr>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<b>{{ t('receipt') }}</b>
-													</td>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<b>{{ t('receiver') }}</b>
-													</td>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<b>{{ t('date') }}</b>
-													</td>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<b>{{ t('payment_method') }}</b>
-													</td>
-													<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-														<b>{{ t('amount') }}</b>
-													</td>
-												</tr>
-                                                <tbody>
-												{% if booking.payments != null and booking.payments.length > 0 %}
-                                                        {% for pay in booking.payments %}
-															{% if pay.paymenttarget != 'provider' %}
-																<tr>
-																	<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-																		{{ pay.transferid or pay.receiptnumber }}
-																	</td>
-																	<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-																		{{ pay.paymenttarget }}
-																	</td>
-																	<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-																		{{ pay.date | date('d-m-Y') }}
-																	</td>
-																	<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-																		{{ pay.paymentmethod }}
-																	</td>
-																	<td valign="top" class="mcnTextContent" style="padding-top:0px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-																		{{ pay.amount }} {{ booking.pricing.currency.symbol }}
-																	</td>
-																</tr>
-															{% endif %}
-														{% endfor %}
-												{% endif %}
-                                                
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                        </table>
-
-                <!-- BEGIN Call to action
-                http://www.yourttoo.com/
-                 -->
-                {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
-
-                {% include "../partials/call-to-action.njk" %}
-
-                <!-- END Call to action -->
-
-
-                <!-- BEGIN message // -->
-                {% include "../partials/yto-team-thanks-message.njk" %}
-                <!-- // END message -->
-
-                        </td>
+                      <td
+                        class='mcnTextContent'
+                        valign='top'
+                        style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                      >
+                        <h1>{{ t('your_booking', { id: booking.idBooking }) }}</h1>
+                      </td>
                     </tr>
-                </tbody>
+                    <tr>
+                      <td class='mcnTextBlockInner' valign='top'>{% include "../partials/affiliate-booking.njk" %}</td>
+                    </tr>
+                    <tr>
+                      <td class='mcnTextBlockInner' valign='top'>{% include "../partials/passengers-table.njk" %}</td>
+                    </tr>
+                    <tr>
+                      <td class='mcnTextBlockInner' valign='top'>{% include "../partials/extras-to-add.njk" %}</td>
+                    </tr>
+                    <tr>
+                      <td class='mcnTextBlockInner' valign='top'>{% include "../partials/booking-payments.njk" %}</td>
+                    </tr>
+                  </tbody>
                 </table>
-                </td>
+              </td>
             </tr>
+          </tbody>
         </table>
-        <!-- // END BODY -->
-    </td>
-</tr>
+      </td>
+    </tr>
+  </table>
+
+  <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
+    <tr>
+      <td class='bodyContainer' valign='top'>
+        <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+          <tbody class='mcnTextBlockOuter'>
+            <!-- BEGIN Call to action
+        http://www.yourttoo.com/
+            -->
+            {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
+
+            {% include "../partials/call-to-action.njk" %}
+
+            <!-- END Call to action -->
+
+            <!-- BEGIN message // -->
+            {% include "../partials/yto-team-thanks-message.njk" %}
+            <!-- // END message -->
+
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
 {% endblock %}

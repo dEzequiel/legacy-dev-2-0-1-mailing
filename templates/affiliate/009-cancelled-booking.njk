@@ -1,76 +1,88 @@
 {% extends '../layouts/yto-layout.njk' %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
-            <tr>
-                <td valign="top" class="headerContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                    <tbody class="mcnTextBlockOuter">
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN HEADER // -->
+      <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='headerContainer' valign='top'>
+            <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+              <tbody class='mcnTextBlockOuter'>
+                <tr>
+                  <td class='mcnTextBlockInner' valign='top'>
+                    <table
+                      class='mcnTextContentContainer'
+                      align='left'
+                      border='0'
+                      cellpadding='0'
+                      cellspacing='0'
+                      width='100%'
+                    >
+                      <tbody>
                         <tr>
-                            <td valign="top" class="mcnTextBlockInner">
-                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                    <tbody>
-                                    <tr>
-                                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                            &nbsp;
-                                        <h1>{{ t('booking_cancelled_yours', { id: booking.idBooking }) }}</h1>
-                                        <p>
-                                        {{ t('expediente') }} {{ booking.affiliate.company.name }}: <strong>{{ booking.idBookingExt }}</strong><br>
-                                        </p>
-                                        </td>
-                    </tr>
-                        </tbody>
-                                </table>
-
-                            </td>
+                          <td
+                            class='mcnTextContent'
+                            valign='top'
+                            style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                          >
+                            <h1>{{ t('booking_cancelled_yours', { id: booking.idBooking }) }}</h1>
+                          </td>
                         </tr>
-                    </tbody>
-                </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- // END HEADER -->
     </td>
-</tr>
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
-            <tr>
-                <td valign="top" class="bodyContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                <tbody class="mcnTextBlockOuter">
-                    <tr>
-                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                            {% include "../partials/holder-passengers.njk" %}
-                        </td>
-                    </tr>
+  </tr>
 
-					<tr>
-						<td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-							{{ t('cancelled_success') }}<br />
-							{{ t('check_possible_fees') }}
-						</td>
-					</tr>
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN BODY // -->
+      <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='bodyContainer' valign='top'>
+            <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+              <tbody class='mcnTextBlockOuter'>
+                <tr>
+                  <td class='mcnTextBlockInner' valign='top'>{% include "../partials/affiliate-booking.njk" %}</td>
+                </tr>
 
-                     <!-- botones -->
-                    <tr>
-                        <td>
-                            <p>
-                               {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
-                                {% include "../partials/call-to-action.njk" %}
-                            </p>
-                        </td>
-                    </tr>
-                        </tbody>
-                        </table>
-                        </td>
-                    </tr>
-        </table>
-        <!-- // END BODY -->
+                <tr>
+                  <td
+                    class='mcnTextContent'
+                    valign='top'
+                    style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                  >
+                    {{ t('cancelled_success') }}
+                    <br />
+                    {{ t('check_possible_fees') }}
+                  </td>
+                </tr>
+
+                <!-- botones -->
+                <tr>
+                  <td
+                    class='mcnTextContent'
+                    valign='top'
+                    style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                  >
+                    {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
+                    {% include "../partials/call-to-action.njk" %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- // END BODY -->
     </td>
-</tr>
+  </tr>
 {% endblock %}

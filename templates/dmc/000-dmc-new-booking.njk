@@ -1,4 +1,5 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
 <tr>
@@ -6,15 +7,16 @@
         <!-- BEGIN HEADER // -->
         <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
             <tr>
-                <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                <td valign="top" class="headerContainer">
+                    {% call textBlock('100%') %}
                     <h1>{{ t('new_booking', { id: booking.idBooking }) }}</h1>
                     <p class="text-muted">
                         <strong>{{ t('dear_colleagues') }}
                             <br/>
                             {{ t('booking_details_intro') }}
                         </strong>
-                        
-                        </p>
+                    </p>
+                    {% endcall %}
                 </td>
             </tr>
         </table>
