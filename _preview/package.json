@@ -9,5 +9,9 @@
     "express": "^4.21.2",
     "nunjucks": "^3.2.4",
     "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "prettier-plugin-nunjucks": "^0.2.0"
   }
 }
