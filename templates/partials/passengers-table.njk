@@ -1,38 +1,44 @@
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
-    <tbody class="mcnCaptionBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextContent" style="padding: 9px 18px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
-                    <tr class="bg-soft" style="font-size: 12px;">
-                        <th>{{ t('pax_title') }}</th>
-                        <th>{{ t('last_name') }}</th>
-                        <th>{{ t('name') }}</th>
-                        <th>{{ t('birthdate') }}</th>
-                        <th>{{ t('nationality') }}</th>
-                        <th>{{ t('document_number') }}</th>
-                        <th>{{ t('room') }}</th>
-                    </tr>
-                    {% for pax in booking.paxes %}
-                    <tr class="itineraryrow title" style="font-size: 11px;">
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.title or pax.gender }}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.lastname }}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.name }}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{% if pax.birthdate %}{{ pax.birthdate | date('Y-m-d') }}{% endif %}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.country.name_en or pax.country.name_es or pax.country.label_en or pax.country.label_es or pax.country.slug }}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.documentnumber }}</td>
-                        <td style="white-space: nowrap; padding-right: 10px;">{{ pax.room }}</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td colspan="7">
-                            <strong>
-                                <hr />
-                            </strong>
-                        </td>
-                    </tr>
-                </table>
+<table class='mcnCaptionBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnCaptionBlockOuter'>
+    <tr>
+      <td class='mcnTextContent' valign='top' style='padding: 9px 18px;'>
+        <table class='mcnCaptionBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+          <tr class='bg-soft' style='font-size: 12px;'>
+            <th>{{ t('pax_title') }}</th>
+            <th>{{ t('last_name') }}</th>
+            <th>{{ t('name') }}</th>
+            <th>{{ t('birthdate') }}</th>
+            <th>{{ t('nationality') }}</th>
+            <th>{{ t('document_number') }}</th>
+            <th>{{ t('room') }}</th>
+          </tr>
+          {% for pax in booking.paxes %}
+            <tr class='itineraryrow title' style='font-size: 11px;'>
+              <td style='white-space: nowrap; padding-right: 10px;'>{{ pax.title or pax.gender }}</td>
+              <td style='white-space: nowrap; padding-right: 10px;'>{{ pax.lastname }}</td>
+              <td style='white-space: nowrap; padding-right: 10px;'>{{ pax.name }}</td>
+              <td style='white-space: nowrap; padding-right: 10px;'>
+                {% if pax.birthdate %}
+                  {{ pax.birthdate | date('Y-m-d') }}
+                {% endif %}
+              </td>
+              <td style='white-space: nowrap; padding-right: 10px;'>
+                {{ pax.country.name_en or pax.country.name_es or pax.country.label_en or pax.country.label_es or pax.country.slug }}
+              </td>
+              <td style='white-space: nowrap; padding-right: 10px;'>{{ pax.documentnumber }}</td>
+              <td style='white-space: nowrap; padding-right: 10px;'>{{ pax.room }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td colspan='7'>
+              <strong>
+                <hr />
+              </strong>
             </td>
-        </tr>
-        
-    </tbody>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+  </tbody>
 </table>

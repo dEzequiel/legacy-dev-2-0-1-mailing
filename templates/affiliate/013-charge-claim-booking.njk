@@ -9,6 +9,7 @@
         <tr>
           <td class='headerContainer' valign='top'>
             {% call textBlock('100%') %}
+              &nbsp;
               <h1>
                 {{ t('your_booking', { id: booking.idBooking }) }}
               </h1>
@@ -26,7 +27,9 @@
               <br />
               <strong>{{ t('paxes') }}:</strong>
               {{ booking.paxes.length }}
-              {% include "../partials/passengers-table.njk" %}
+            {% endcall %}
+            {% include "../partials/passengers-table.njk" %}
+            {% call textBlock('100%') %}
               {{ t('payment_claim_text') | safe }}
             {% endcall %}
           </td>

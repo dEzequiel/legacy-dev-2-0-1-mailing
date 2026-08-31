@@ -1,0 +1,66 @@
+<strong>{{ t('company_name') }}</strong>
+<br />
+{{ company.name }}
+<br />
+<br />
+
+<strong>{{ t('company_legalname') }}</strong>
+<br />
+{{ company.legalname }}
+<br />
+<br />
+
+{# <strong>C.I.F. / Identificador Fiscal</strong>
+<br>
+{{company.taxid}}
+<br><br>
+
+<strong>Año de establecimiento</strong>
+<br>
+{{company.constitutionyear}}
+<br><br> #}
+
+{# <strong>Título-licencia de Agencia</strong>
+<br>
+{{company.agencylic}}
+<br><br> #}
+
+{# <strong>Grupo de Gestión</strong>
+<br>
+{{company.group}}
+<br><br> #}
+
+{# <strong>Sitio Web</strong>
+<br>
+{{company.website}}
+<br><br> #}
+
+<strong>{{ t('phone') }}</strong>
+<br />
+{{ company.phone }}
+<br />
+<br />
+
+<strong>{{ t('address') }}</strong>
+<br />
+{{ company.location.fulladdress }}
+<br />
+{{ company.location.stateorprovince }}
+{{ company.location.pc }}
+<br />
+{{ company.location.country }}
+<br />
+<br />
+
+<strong>{{ t('account_manager') }}</strong>
+<br />
+{{ contact.firstname }}
+{{ contact.lastname }}
+<br />
+{{ contact.position }}
+<br />
+{{ contact.email }}
+<br />
+{# skype: {{contact.skype}} #}
+<br />
+<br />

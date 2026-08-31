@@ -1,0 +1,74 @@
+<div class='price padded-l text-gray'>
+  <p>
+    {% if booking.bookingmodel != 'standard' %}
+      <span>
+        <b>{{ t('net_agency') }}</b>
+        <span class='yto-box-price'>{{ booking.breakdown.agency.net }} {{ booking.pricing.currency.symbol }}</span>
+      </span>
+      {% if booking.services != null and booking.services.length > 0 %}
+        +
+        <span>
+          <b>{{ t('net_flights') }}</b>
+          <span class='yto-box-price'>{{ booking.pricing.services.aerial.net }} {{ booking.pricing.currency.symbol }}</span>
+        </span>
+        (
+        {{ t('total') }}
+        :
+        {{ booking.pricing.services.aerial.net + booking.breakdown.agency.net }}
+        )
+      {% endif %}
+    {% else %}
+      <span>
+        <b>{{ t('net_agency_tour') }}</b>
+        <span class='yto-box-price'>{{ booking.price.segments.tour.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+      </span>
+      <br />
+      <span>
+        <b>{{ t('net_agency_extras') }}</b>
+        <span class='yto-box-price'>{{ booking.price.segments.extra.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+      </span>
+      <br />
+      <span>
+        <b>{{ t('net_agency_flights') }}</b>
+        <span class='yto-box-price'>{{ booking.price.segments.flight.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+      </span>
+      <br />
+      (
+      {{ t('total') }}
+      :
+      {{ booking.price.totalNetPrice }}
+      )
+    {% endif %}
+  </p>
+  <p>
+    {% if booking.bookingmodel != 'standard' %}
+      <span><b>{{ t('net_agency_per_pax') }}</b></span>
+      <br />
+      {% for pricekey in booking.breakdown.roomsbyprice.travelersense.keys %}
+        {% set paxprice = booking.breakdown.roomsbyprice.travelersense[pricekey] %}
+        {% set hashrooms = { double: 'Doble', triple: 'Triple', single: 'Individual', quad: 'Cuadruple' } %}
+        <span>
+          {{ paxprice.paxes }}
+          pax en
+          {{ paxprice.room or paxprice.servicetype }}
+          x
+          <strong>{{ paxprice.price }} {{ booking.pricing.currency.symbol }}</strong>
+        </span>
+        <br />
+      {% endfor %}
+    {% else %}
+      <span><b>{{ t('net_agency_per_pax') }}</b></span>
+      <br />
+      {% for priceItem in booking.price.bookingPriceItems %}
+        {% set paxprice = priceItem.agency.unitPriceBeforeMarkup %}
+        <span>
+          {{ priceItem.quantity }}
+          {{ priceItem.name }}
+          x
+          <strong>{{ priceItem.agency.unitPriceBeforeMarkup }} {{ booking.price.currency.symbol }}</strong>
+        </span>
+        <br />
+      {% endfor %}
+    {% endif %}
+  </p>
+</div>

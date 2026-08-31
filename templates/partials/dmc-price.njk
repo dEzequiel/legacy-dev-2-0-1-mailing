@@ -1,0 +1,50 @@
+<div class='price padded-l text-gray'>
+  {% if booking.bookingmodel !== 'standard' %}
+    <p>
+      <span>
+        <b>{{ t('net_dmc') }}</b>
+        <span class='yto-box-price-dmc'>{{ booking.breakdown.provider.net }} {{ booking.dmc.currency.symbol }}</span>
+      </span>
+      {% if booking.services != null and booking.services.length > 0 %}
+        +
+        <span>
+          <b>{{ t('net_flights') }}</b>
+          <span class='yto-box-price'>{{ booking.pricing.services.aerial.original }} {{ booking.pricing.currency.symbol }}</span>
+        </span>
+      {% endif %}
+    </p>
+    <p>
+      <span><b>{{ t('net_dmc_per_pax') }}</b></span>
+      <br />
+      {% for pricekey in booking.breakdown.roomsbyprice.provider.keys %}
+        {% set paxprice = booking.breakdown.roomsbyprice.provider[pricekey] %}
+        {% set hashrooms = { double: 'Doble', triple: 'Triple', single: 'Individual', quad: 'Cuadruple' } %}
+        <span>
+          {{ paxprice.paxes }}
+          pax en
+          {{ paxprice.room or paxprice.servicetype }}
+          x
+          <strong>{{ paxprice.price }} {{ booking.pricing.currency.symbol }}</strong>
+        </span>
+        <br />
+      {% endfor %}
+    </p>
+  {% else %}
+    <p>
+      <span>
+        <b>{{ t('net_dmc') }}</b>
+        <span class='yto-box-price-dmc'>{{ booking.price.segments.tour.totalProviderPrice }} {{ booking.price.segments.tour.providerCurrency }}</span>
+      </span>
+      <br />
+      <span>
+        <b>{{ t('net_dmc_extras') }}</b>
+        <span class='yto-box-price-dmc'>{{ booking.price.segments.extra.totalProviderPrice }} {{ booking.price.segments.extra.providerCurrency }}</span>
+      </span>
+      <br />
+      <span>
+        <b>{{ t('net_dmc_flights') }}</b>
+        <span class='yto-box-price-dmc'>{{ booking.price.segments.flight.totalProviderPrice }} {{ booking.price.segments.flight.providerCurrency }}</span>
+      </span>
+    </p>
+  {% endif %}
+</div>

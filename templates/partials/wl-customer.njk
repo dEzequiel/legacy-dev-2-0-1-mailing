@@ -1,27 +1,34 @@
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock">
-  <tbody class="mcnBoxedTextBlockOuter">
+<table class='mcnBoxedTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnBoxedTextBlockOuter'>
     <tr>
-      <td valign="top" class="mcnBoxedTextBlockInner">
-        <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnBoxedTextContentContainer">
+      <td class='mcnBoxedTextBlockInner' valign='top'>
+        <table class='mcnBoxedTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
           <tbody>
-          <tr>
-            <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-              <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%">
-                <tbody>
-                  <tr>
-                    <td valign="top" class="mcnTextContent" >
-                      <h2 class="mc-toc-title">{{ t('customer') }}</h2>
-                      <br />
-                      {{ t('name_label') }} <strong>{{ booking.signin.name }}</strong><br/>
-                      {{ t('lastname_label') }} <strong>{{ booking.signin.lastname }}</strong><br/>
-                      {{ t('email') }} <strong>{{ booking.signin.email }}</strong><br/>
-                      {{ t('phone_label') }} <strong>{{ booking.signin.phone }}</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
+            <tr>
+              <td style='padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;'>
+                <table class='mcnTextContentContainer' border='0' cellpadding='18' cellspacing='0' width='100%'>
+                  <tbody>
+                    <tr>
+                      <td class='mcnTextContent' valign='top'>
+                        <h2 class='mc-toc-title'>{{ t('customer') }}</h2>
+                        <br />
+                        {{ t('name_label') }}
+                        <strong>{{ booking.signin.name }}</strong>
+                        <br />
+                        {{ t('lastname_label') }}
+                        <strong>{{ booking.signin.lastname }}</strong>
+                        <br />
+                        {{ t('email') }}
+                        <strong>{{ booking.signin.email }}</strong>
+                        <br />
+                        {{ t('phone_label') }}
+                        <strong>{{ booking.signin.phone }}</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
           </tbody>
         </table>
       </td>

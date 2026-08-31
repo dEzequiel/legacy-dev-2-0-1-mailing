@@ -1,450 +1,558 @@
 {# DESTINOS #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">				
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-weight: normal;"><br>
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td
+                class='mcnTextContent'
+                valign='top'
+                style="padding: 9px 18px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-weight: normal;"
+              >
+                <br />
 
-<h2>
-	<img height="18" src="http://res.cloudinary.com/open-market-travel/image/upload/e_grayscale/v1423064611/mail/fa-globe.png" style="height: 18px; width: 18px;" width="18">
-	{% for destination in request.destinations %}
-		{% if destination.city != '' %}
-			{{destination.city}}
-			({{destination.country}})
-		{% else %}
-			{{destination.fulladdress}}
-		{% endif %}
-		{% if not loop.last %} - {% endif %}
-	{% endfor %}
-</h2>
+                <h2>
+                  <img
+                    height='18'
+                    src='http://res.cloudinary.com/open-market-travel/image/upload/e_grayscale/v1423064611/mail/fa-globe.png'
+                    style='height: 18px; width: 18px;'
+                    width='18'
+                  />
+                  {% for destination in request.destinations %}
+                    {% if destination.city != '' %}
+                      {{ destination.city }}
+                      (
+                      {{ destination.country }}
+                      )
+                    {% else %}
+                      {{ destination.fulladdress }}
+                    {% endif %}
+                    {% if not loop.last %}-{% endif %}
+                  {% endfor %}
+                </h2>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN DESTINOS #}
 
-
 {# ACTIVIDADES #}
 {% if request.whattodo.length > 0 %}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+  <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+    <tbody class='mcnTextBlockOuter'>
+      <tr>
+        <td class='mcnTextBlockInner' valign='top'>
+          <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+            <tbody>
+              <tr>
+                <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-<div>
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-tags.png" style="height: 14px; width: 14px;" width="14">&nbsp;
-	<strong>
-		<span>
-			{% for tag in request.whattodo %}
-				{{tag.label}}{% if not loop.last %}, {% endif %}
-			{% endfor %}
-		</span>
-	</strong>
-</div>
+                  <div>
+                    <img
+                      height='14'
+                      src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-tags.png'
+                      style='height: 14px; width: 14px;'
+                      width='14'
+                    />
+                    &nbsp;
+                    <strong>
+                      <span>
+                        {% for tag in request.whattodo %}
+                          {{ tag.label }}
+                          {% if not loop.last %},{% endif %}
+                        {% endfor %}
+                      </span>
+                    </strong>
+                  </div>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
+                  <br />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 {% endif %}
 {# FIN ACTIVIDADES #}
 
-
 {# CALENDARIO #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-<div>
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-calendar.png" style="height: 14px; width: 14px;" width="14">
-	&nbsp;
-	<span>
-		{% if request.dates.knowingdates %}
-			<strong>{{ t('arrival_on') }} {{request.dates.arrival.day}}-{{ request.dates.arrival.month + 1 }}-{{request.dates.arrival.year}}</strong>
-		{% else %}
-			<strong>{{ t('no_exact_date') }} {{request.dates.month.monthname}} {{request.dates.month.monthyear}} 
-			{% if request.dates.week != 0 %}
-				({{ t('week') }} {{request.dates.week}})
-			{% endif %}
-			</strong>
-		{% endif %}
-		<br />
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{ t('duration') }}: {{request.dates.duration}} {{ t('days') }}</strong>
-		<br />
-		{% if request.dates.alreadygotflights %}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{ t('flight_booked') }}</strong>
-			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('flight_data_in') }} {{request.dates.dataflightsIn}}
-			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('flight_data_out') }} {{request.dates.dataflightsOut}}
-			<br>
-		{% else %}
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{ t('flight_not_booked') }}</strong><br>
-			{% if request.dates.flexibility.number != 0 %}
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('flexibility_days', { n: request.dates.flexibility.number }) }}
-			{% elif request.dates.knowingdates %}
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('no_flexibility') }}
-			{% endif %}
-		{% endif %}
-	</span>
-</div>
+                <div>
+                  <img
+                    height='14'
+                    src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-calendar.png'
+                    style='height: 14px; width: 14px;'
+                    width='14'
+                  />
+                  &nbsp;
+                  <span>
+                    {% if request.dates.knowingdates %}
+                      <strong>{{ t('arrival_on') }} {{ request.dates.arrival.day }}-{{ request.dates.arrival.month + 1 }}-{{ request.dates.arrival.year }}</strong>
+                    {% else %}
+                      <strong>
+                        {{ t('no_exact_date') }}
+                        {{ request.dates.month.monthname }}
+                        {{ request.dates.month.monthyear }}
+                        {% if request.dates.week != 0 %}
+                          ({{ t('week') }} {{ request.dates.week }})
+                        {% endif %}
+                      </strong>
+                    {% endif %}
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>{{ t('duration') }}: {{ request.dates.duration }} {{ t('days') }}</strong>
+                    <br />
+                    {% if request.dates.alreadygotflights %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <strong>
+                        {{ t('flight_booked') }}
+                      </strong>
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('flight_data_in') }}
+                      {{ request.dates.dataflightsIn }}
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('flight_data_out') }}
+                      {{ request.dates.dataflightsOut }}
+                      <br />
+                    {% else %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <strong>
+                        {{ t('flight_not_booked') }}
+                      </strong>
+                      <br />
+                      {% if request.dates.flexibility.number != 0 %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('flexibility_days', { n: request.dates.flexibility.number }) }}
+                      {% elif request.dates.knowingdates %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('no_flexibility') }}
+                      {% endif %}
+                    {% endif %}
+                  </span>
+                </div>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN CALENDARIO #}
 
-
 {# ALOJAMIENTO #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-<div>
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-bed.png" style="height: 14px; width: 14px;" width="14">
-	&nbsp;
-	{% if request.affiliate %}
-	<span>
-		<strong>
-			{{ t('hotels') }}
-			{% set hashotel = false %}
-			{% if request.hosting.lowcosthotels %}
-				{{ t('hotel_economico') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.standarhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_standard') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.superiorhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_confort') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.charmhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_charm') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.luxuryhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_lujo') }}
-			{% endif %}
-		</strong>
-		<br>
-		{% if request.hosting.hostingKindNotes != '' %}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			{{ t('comments') }}&nbsp;
-			<em>{{request.hosting.hostingKindNotes}}</em>
-		{% endif %}
-	</span>
-	{% else %}
-	<span>
-		<strong>
-			{{ t('hotels') }}
-			{% set hashotel = false %}
-			{% if request.hosting.lowcosthotels %}
-				{{ t('hotel_lowcost') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.standarhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_standard') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.superiorhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_superiores') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.charmhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_charm') }}
-				{% set hashotel = true %}
-			{% endif %}
-			{% if request.hosting.luxuryhotels %}
-				{% if hashotel %}, {% endif %}{{ t('hotel_delujo') }}
-			{% endif %}
-		</strong>
-		<br>
-	</span>
-	{% endif %}
-</div>
+                <div>
+                  <img
+                    height='14'
+                    src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-bed.png'
+                    style='height: 14px; width: 14px;'
+                    width='14'
+                  />
+                  &nbsp;
+                  {% if request.affiliate %}
+                    <span>
+                      <strong>
+                        {{ t('hotels') }}
+                        {% set hashotel = false %}
+                        {% if request.hosting.lowcosthotels %}
+                          {{ t('hotel_economico') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.standarhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_standard') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.superiorhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_confort') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.charmhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_charm') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.luxuryhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_lujo') }}
+                        {% endif %}
+                      </strong>
+                      <br />
+                      {% if request.hosting.hostingKindNotes != '' %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ t('comments') }}
+                        &nbsp;
+                        <em>
+                          {{ request.hosting.hostingKindNotes }}
+                        </em>
+                      {% endif %}
+                    </span>
+                  {% else %}
+                    <span>
+                      <strong>
+                        {{ t('hotels') }}
+                        {% set hashotel = false %}
+                        {% if request.hosting.lowcosthotels %}
+                          {{ t('hotel_lowcost') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.standarhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_standard') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.superiorhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_superiores') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.charmhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_charm') }}
+                          {% set hashotel = true %}
+                        {% endif %}
+                        {% if request.hosting.luxuryhotels %}
+                          {% if hashotel %},{% endif %}
+                          {{ t('hotel_delujo') }}
+                        {% endif %}
+                      </strong>
+                      <br />
+                    </span>
+                  {% endif %}
+                </div>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN ALOJAMIENTO #}
 
-
 {# PASAJEROS #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-{% set totalpax = 0 %}
-{% for room in request.roomDistribution %}
-	{% set totalpax = totalpax + room.paxList.length %}
-{% endfor %}
-<div>
+                {% set totalpax = 0 %}
+                {% for room in request.roomDistribution %}
+                  {% set totalpax = totalpax + room.paxList.length %}
+                {% endfor %}
+                <div>
 
-	<!-- ****total pax ****************** -->
-	{% set totalPax = 0 %}
-	{% for distribution in request.roomDistribution %}
-		{% set totalPax = totalPax + distribution.paxList.length %}
-	{% endfor %}		
-	<!-- ******************************** -->
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-male.png" style="height: 14px; width: 14px;" width="14">&nbsp;
-	{% if request.group == null %}
-		<strong>
-			{{ totalPax }} {% if totalPax > 1 %}{{ t('passengers') }}{% else %}{{ t('passenger') }}{% endif %}:
-		</strong>
-		&nbsp;{{ request.roomDistribution.length }}
-		{% if request.roomDistribution.length > 1 %} 
-			{{ t('rooms') }} 
-		{% else %}
-			{{ t('room') }}
-		{% endif %}
-		<br>
-		{% for room in request.roomDistribution %}
-			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<em>{{ t('room') }} {{ loop.index }}: 
-			{% if room.roomType.roomCode == 'double' %} 
-				{{ t('room_double') }}
-			{% endif %}
-			{% if room.roomType.roomCode == 'single' %} 
-				{{ t('room_single') }}
-			{% endif %}
-			{% if room.roomType.roomCode == 'triple' %}
-				{{ t('room_triple') }}
-			{% endif %}
-			</em>
-			{% for pax in room.paxList %}
-				<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				{{ t('pax_age', { n: loop.index }) }} {{ pax.age }} {{ t('years') }}
-			{% endfor %}
-			<br>
-		{% endfor %}
+                <!-- ****total pax ****************** -->
+                {% set totalPax = 0 %}
+                {% for distribution in request.roomDistribution %}
+                  {% set totalPax = totalPax + distribution.paxList.length %}
+                {% endfor %}
+                <!-- ******************************** -->
+                <img
+                  height='14'
+                  src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-male.png'
+                  style='height: 14px; width: 14px;'
+                  width='14'
+                />
+                &nbsp;
+                {% if request.group == null %}
+                  <strong>
+                    {{ totalPax }}
+                    {% if totalPax > 1 %}
+                      {{ t('passengers') }}
+                    {% else %}
+                      {{ t('passenger') }}
+                    {% endif %}:
+                  </strong>
+                  &nbsp;
+                  {{ request.roomDistribution.length }}
+                  {% if request.roomDistribution.length > 1 %}
+                    {{ t('rooms') }}
+                  {% else %}
+                    {{ t('room') }}
+                  {% endif %}
+                  <br />
+                  {% for room in request.roomDistribution %}
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <em>
+                      {{ t('room') }}
+                      {{ loop.index }}:{% if room.roomType.roomCode == 'double' %}
+                        {{ t('room_double') }}
+                      {% endif %}
+                      {% if room.roomType.roomCode == 'single' %}
+                        {{ t('room_single') }}
+                      {% endif %}
+                      {% if room.roomType.roomCode == 'triple' %}
+                        {{ t('room_triple') }}
+                      {% endif %}
+                    </em>
+                    {% for pax in room.paxList %}
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('pax_age', { n: loop.index }) }}
+                      {{ pax.age }}
+                      {{ t('years') }}
+                    {% endfor %}
+                    <br />
+                  {% endfor %}
+                {% elif request.group != null %}
+                  <strong>
+                    {{ t('group') }}
+                    {% if request.group.typeGroup == 'company' %}
+                      {{ t('group_company') }}
+                    {% endif %}
+                    {% if request.group.typeGroup == 'club' %}
+                      {{ t('group_club') }}
+                    {% endif %}
+                    {% if request.group.typeGroup == 'students' %}
+                      {{ t('group_students') }}
+                    {% endif %}
+                    {% if request.group.typeGroup == 'otro' %}
+                      {{ t('group_other') }}
+                    {% endif %}
+                    {{ totalPax }}
+                    {% if totalPax > 1 %}
+                      {{ t('passengers') }}
+                    {% else %}
+                      {{ t('passenger') }}
+                    {% endif %}
+                  </strong>
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {{ t('rooms') }}
+                  :
+                  {% if request.group.rooms.single %}
+                    {{ request.group.rooms.single }}
+                    {% if request.group.rooms.single > 1 %}{{ t('individuals') }}{% else %}{{ t('individual') }}{% endif %}
+                  {% endif %}
+                  {% if request.group.rooms.double %}
+                    {{ request.group.rooms.double }}
+                    {% if request.group.rooms.double > 1 %}{{ t('doubles') }}{% else %}{{ t('double') }}{% endif %}
+                  {% endif %}
+                  {% if request.group.rooms.triple %}
+                    {{ request.group.rooms.triple }}
+                    {% if request.group.rooms.triple > 1 %}{{ t('triples') }}{% else %}{{ t('triple') }}{% endif %}
+                  {% endif %}
+                  <br />
+                  {% if request.group.comments != '' %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ t('comments') }}
+                    <em>
+                      {{ request.group.comments }}
+                    </em>
+                  {% endif %}
+                {% endif %}
 
-	{% elif request.group != null %}
+                <span>
 
-		<strong>
-			{{ t('group') }}
-			{% if request.group.typeGroup == 'company' %}
-				{{ t('group_company') }}
-			{% endif %}
-			{% if request.group.typeGroup == 'club' %}
-				{{ t('group_club') }}
-			{% endif %}
-			{% if request.group.typeGroup == 'students' %}
-				{{ t('group_students') }}
-			{% endif %}
-			{% if request.group.typeGroup == 'otro' %}
-				{{ t('group_other') }}
-			{% endif %}
-			{{ totalPax }} {% if totalPax > 1 %}{{ t('passengers') }}{% else %}{{ t('passenger') }}{% endif %}
-		</strong>
-		<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		{{ t('rooms') }}: 
-		{% if request.group.rooms.single %}
-			{{ request.group.rooms.single }} {% if request.group.rooms.single > 1 %}{{ t('individuals') }}{% else %}{{ t('individual') }}{% endif %}
-		{% endif %}
-		{% if request.group.rooms.double %}
-			{{ request.group.rooms.double }} {% if request.group.rooms.double > 1 %}{{ t('doubles') }}{% else %}{{ t('double') }}{% endif %}
-		{% endif %}
-		{% if request.group.rooms.triple %}
-			{{ request.group.rooms.triple }} {% if request.group.rooms.triple > 1 %}{{ t('triples') }}{% else %}{{ t('triple') }}{% endif %}
-		{% endif %}
-		<br>
-		{% if request.group.comments != '' %}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('comments') }} <em>{{ request.group.comments }}</em>
-		{% endif %}
-		
-	{% endif %}
-
-	<span>
-	
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN PASAJEROS #}
 
-
 {# INFORMACION ADICIONAL #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-<div>
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-list.png" style="height: 14px; width: 14px;" width="14">
-	&nbsp;
-	<span><strong>{{ t('additional_info') }}</strong>
-	<br>
-	{% if request.additionalinfo.trip == 'grouptrip' and request.group == null %}
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('preference') }}&nbsp;
-		<strong>{{ t('group_trip') }}</strong>
-		<br>
-	{% endif %}
-		{% if request.additionalinfo.trip == 'privatetrip' %}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('preference') }} <strong>{{ t('private_trip') }}</strong> | 
-			{% if request.additionalinfo.needs == 'onlyhotel' %}
-				{{ t('no_transport') }}<br>
-			{% endif %}
-			{% if request.additionalinfo.needs == 'rentacar' %}
-				{{ t('rentacar') }}<br>
-			{% endif %}
-			{% if request.additionalinfo.needs == 'caranddriver' %}
-				{{ t('car_and_driver') }}<br>
-			{% endif %}
-			{% if request.additionalinfo.guide.included %}
-				{% set hasguide = false %}
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ t('wants_guides') }}&nbsp;
-				{% if request.additionalinfo.guide.language.spanish %}
-					{{ t('spanish') }}
-					{% set hasguide = true %}
-				{% endif %}
-				{% if request.additionalinfo.guide.language.english %}
-					{% if hasguide %}, {% endif %}{{ t('english') }}
-					{% set hasguide = true %}
-				{% endif %}
-				{% if request.additionalinfo.guide.language.french %}
-					{% if hasguide %}, {% endif %}{{ t('french') }}
-					{% set hasguide = true %}
-				{% endif %}
-				{% if request.additionalinfo.guide.language.german %}
-					{% if hasguide %}, {% endif %}{{ t('german') }}
-					{% set hasguide = true %}
-				{% endif %}
-				{% if request.additionalinfo.guide.language.italian %}
-					{% if hasguide %}, {% endif %}{{ t('italian') }}
-					{% set hasguide = true %}
-				{% endif %}
-				{% if request.additionalinfo.guide.language.portuguese %}
-					{% if hasguide %}, {% endif %}{{ t('portuguese') }}
-				{% endif %}
-			{% endif %}
-			<br>
-		{% endif %}
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		{{ t('regimen') }}&nbsp;
-		<strong>
-			{% if request.additionalinfo.regimen == 'ol' %}
-				{{ t('reg_ol') }}
-			{% endif %}
-			{% if request.additionalinfo.regimen == 'bb' %}
-				{{ t('reg_bb') }}
-			{% endif %}
-			{% if request.additionalinfo.regimen == 'hb' %}
-				{{ t('reg_hb') }}
-			{% endif %}
-			{% if request.additionalinfo.regimen == 'fb' %}
-				{{ t('reg_fb') }}
-			{% endif %}
-			{% if request.additionalinfo.regimen == 'ai' %}
-				{{ t('reg_ai') }}
-			{% endif %}
-		</strong>
-		<br>
-		{% if request.additionalinfo.description != '' %}
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			{{ t('comments') }}&nbsp;
-			<em>{{ request.additionalinfo.description }}</em>
-		{% endif %}
-	</span>
-</div>
+                <div>
+                  <img
+                    height='14'
+                    src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-list.png'
+                    style='height: 14px; width: 14px;'
+                    width='14'
+                  />
+                  &nbsp;
+                  <span>
+                    <strong>{{ t('additional_info') }}</strong>
+                    <br />
+                    {% if request.additionalinfo.trip == 'grouptrip' and request.group == null %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('preference') }}
+                      &nbsp;
+                      <strong>
+                        {{ t('group_trip') }}
+                      </strong>
+                      <br />
+                    {% endif %}
+                    {% if request.additionalinfo.trip == 'privatetrip' %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('preference') }}
+                      <strong>
+                        {{ t('private_trip') }}
+                      </strong>
+                      |
+                      {% if request.additionalinfo.needs == 'onlyhotel' %}
+                        {{ t('no_transport') }}
+                        <br />
+                      {% endif %}
+                      {% if request.additionalinfo.needs == 'rentacar' %}
+                        {{ t('rentacar') }}
+                        <br />
+                      {% endif %}
+                      {% if request.additionalinfo.needs == 'caranddriver' %}
+                        {{ t('car_and_driver') }}
+                        <br />
+                      {% endif %}
+                      {% if request.additionalinfo.guide.included %}
+                        {% set hasguide = false %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ t('wants_guides') }}
+                        &nbsp;
+                        {% if request.additionalinfo.guide.language.spanish %}
+                          {{ t('spanish') }}
+                          {% set hasguide = true %}
+                        {% endif %}
+                        {% if request.additionalinfo.guide.language.english %}
+                          {% if hasguide %},{% endif %}
+                          {{ t('english') }}
+                          {% set hasguide = true %}
+                        {% endif %}
+                        {% if request.additionalinfo.guide.language.french %}
+                          {% if hasguide %},{% endif %}
+                          {{ t('french') }}
+                          {% set hasguide = true %}
+                        {% endif %}
+                        {% if request.additionalinfo.guide.language.german %}
+                          {% if hasguide %},{% endif %}
+                          {{ t('german') }}
+                          {% set hasguide = true %}
+                        {% endif %}
+                        {% if request.additionalinfo.guide.language.italian %}
+                          {% if hasguide %},{% endif %}
+                          {{ t('italian') }}
+                          {% set hasguide = true %}
+                        {% endif %}
+                        {% if request.additionalinfo.guide.language.portuguese %}
+                          {% if hasguide %},{% endif %}
+                          {{ t('portuguese') }}
+                        {% endif %}
+                      {% endif %}
+                      <br />
+                    {% endif %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{ t('regimen') }}
+                    &nbsp;
+                    <strong>
+                      {% if request.additionalinfo.regimen == 'ol' %}
+                        {{ t('reg_ol') }}
+                      {% endif %}
+                      {% if request.additionalinfo.regimen == 'bb' %}
+                        {{ t('reg_bb') }}
+                      {% endif %}
+                      {% if request.additionalinfo.regimen == 'hb' %}
+                        {{ t('reg_hb') }}
+                      {% endif %}
+                      {% if request.additionalinfo.regimen == 'fb' %}
+                        {{ t('reg_fb') }}
+                      {% endif %}
+                      {% if request.additionalinfo.regimen == 'ai' %}
+                        {{ t('reg_ai') }}
+                      {% endif %}
+                    </strong>
+                    <br />
+                    {% if request.additionalinfo.description != '' %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {{ t('comments') }}
+                      &nbsp;
+                      <em>
+                        {{ request.additionalinfo.description }}
+                      </em>
+                    {% endif %}
+                  </span>
+                </div>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN INFORMACION ADICIONAL #}
 
-
 {# PRESUPUESTO #}
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-	<tbody class="mcnTextBlockOuter">
-		<tr>
-			<td valign="top" class="mcnTextBlockInner">
-				<table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
-					<tbody>
-						<tr>
-							<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: 140%;">
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextBlockInner' valign='top'>
+        <table class='mcnTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td class='mcnTextContent' valign='top' style='padding: 9px 18px; line-height: 140%;'>
 
-<div>
-	<img height="14" src="http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-money.png" style="height: 14px; width: 14px;" width="14">
-	&nbsp;&nbsp;
-	<span style="line-height:20.7999992370605px">{{ t('budget_per_pax') }}&nbsp;
-		<strong>
-			{{ request.budget.cost | numberFractions }} {{ request.budget.currency.symbol }}
-		</strong>
-	</span>
-</div>
+                <div>
+                  <img
+                    height='14'
+                    src='http://res.cloudinary.com/open-market-travel/image/upload/v1423064611/mail/fa-money.png'
+                    style='height: 14px; width: 14px;'
+                    width='14'
+                  />
+                  &nbsp;&nbsp;
+                  <span style='line-height:20.7999992370605px'>
+                    {{ t('budget_per_pax') }}
+                    &nbsp;
+                    <strong>{{ request.budget.cost | numberFractions }} {{ request.budget.currency.symbol }}</strong>
+                  </span>
+                </div>
 
-								<br>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 {# FIN PRESUPUESTO #}

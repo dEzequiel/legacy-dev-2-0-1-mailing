@@ -16,26 +16,14 @@
           <tbody>
             <tr>
               <td class='mcnTextContent' style='padding-left:18px;'>
-                <b>{{ t('booking_reference') }}:</b>
-                {{ booking.idBooking }}
-              </td>
-            </tr>
-            <tr>
-              <td class='mcnTextContent' style='padding-left:18px;'>
-                <strong>{{ t('expediente') }} {{ booking.affiliate.company.name }}:</strong>
-                {{ booking.idBookingExt }}
-              </td>
-            </tr>
-
-            <tr>
-              <td class='mcnTextContent' style='padding: 18px 18px 18px;'>
-                <h2>{{ product.name }}</h2>
-              </td>
-            </tr>
-            <tr>
-              <td class='mcnTextContent' style='padding-left:18px;'>
                 <b>{{ t('agency') }}:</b>
                 {{ booking.affiliate.company.name }}
+              </td>
+            </tr>
+            <tr>
+              <td class='mcnTextContent' style='padding-left:18px;'>
+                <b>{{ t('tour_name') }}:</b>
+                {{ product.name }}
               </td>
             </tr>
             <tr>

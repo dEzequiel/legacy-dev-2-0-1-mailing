@@ -1,45 +1,66 @@
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock">
-  <tbody class="mcnBoxedTextBlockOuter">
-  <tr>
-    <td valign="top" class="mcnBoxedTextBlockInner">
-      <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnBoxedTextContentContainer">
-        <tbody>
-          <tr>
-            <td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-              <table border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="border: 1px solid #DDDDDD;">
-                <tbody>
-                  <tr>
-                    <td valign="top" class="mcnTextContent">
-                      <h2 class="null" style="line-height: 20.7999992370605px;">{{ t('accommodation') }}:</h2>
-                      {% for room in booking.rooms %}
-                        <h3 class="null" style="line-height: 20.7999992370605px;">
-                          <br/>
-                          {{ t('room') }} {{ loop.index }}: {{ room.roomcode }}</h3>
-                          <br style="line-height: 20.7999992370605px;"/>
+<table class='mcnBoxedTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnBoxedTextBlockOuter'>
+    <tr>
+      <td class='mcnBoxedTextBlockInner' valign='top'>
+        <table class='mcnBoxedTextContentContainer' align='left' border='0' cellpadding='0' cellspacing='0' width='600'>
+          <tbody>
+            <tr>
+              <td style='padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;'>
+                <table
+                  class='mcnTextContentContainer'
+                  border='0'
+                  cellpadding='18'
+                  cellspacing='0'
+                  width='100%'
+                  style='border: 1px solid #DDDDDD;'
+                >
+                  <tbody>
+                    <tr>
+                      <td class='mcnTextContent' valign='top'>
+                        <h2 class='null' style='line-height: 20.7999992370605px;'>{{ t('accommodation') }}:</h2>
+                        {% for room in booking.rooms %}
+                          <h3 class='null' style='line-height: 20.7999992370605px;'>
+                            <br />
+                            {{ t('room') }}
+                            {{ loop.index }}:{{ room.roomcode }}
+                          </h3>
+                          <br style='line-height: 20.7999992370605px;' />
 
-                        {% for pax in booking.paxes %}
-                        <strong style="line-height:20.7999992370605px">{{ t('pax') }} {{ loop.index }} </strong>
+                          {% for pax in booking.paxes %}
+                            <strong style='line-height:20.7999992370605px'>{{ t('pax') }} {{ loop.index }}</strong>
                             {% if loop.index == 1 %}
-                              <strong style="line-height:20.7999992370605px">-&nbsp; {{ t('booking_holder') }}</strong>
+                              <strong style='line-height:20.7999992370605px'>-&nbsp; {{ t('booking_holder') }}</strong>
                             {% endif %}
-                            <br style="line-height: 20.7999992370605px;"/>
-                            <span style="line-height:20.7999992370605px">
-                              {{ t('name_label') }}&nbsp;<strong>{{ pax.name }}</strong>
-                              <br/>
-                              {{ t('lastname_label') }}&nbsp;<strong>{{ pax.lastname }}&nbsp;</strong>
+                            <br style='line-height: 20.7999992370605px;' />
+                            <span style='line-height:20.7999992370605px'>
+                              {{ t('name_label') }}
+                              &nbsp;
+                              <strong>{{ pax.name }}</strong>
+                              <br />
+                              {{ t('lastname_label') }}
+                              &nbsp;
+                              <strong>{{ pax.lastname }}&nbsp;</strong>
                             </span>
-                            <br style="line-height: 20.7999992370605px;"/>
-                            <span style="line-height:20.7999992370605px">{{ t('birthdate') }}</span>
-                            <span style="line-height:20.7999992370605px">:&nbsp;<strong>{{ pax.birthdate | date('d F, Y') }}&nbsp;</strong>
-                              <br/>
-                              {{ t('passport_id') }}&nbsp;<strong>[{{ pax.documenttype | upper }}] {{ pax.documentnumber }}</strong>
+                            <br style='line-height: 20.7999992370605px;' />
+                            <span style='line-height:20.7999992370605px'>
+                              {{ t('birthdate') }}
                             </span>
-                            <br style="line-height: 20.7999992370605px;"/>
-                            <span style="line-height:20.7999992370605px">{{ t('country_of_nationality') }}</span>
-                            <span style="line-height:20.7999992370605px">:&nbsp;</span>
-                            <strong style="line-height:20.7999992370605px">{{ pax.country['label_' + lang] }} ({{ pax.country.slug }})</strong>
-                            <br style="line-height: 20.7999992370605px;"/>
-                            <br style="line-height: 20.7999992370605px;"/>
+                            <span style='line-height:20.7999992370605px'>
+                              :&nbsp;
+                              <strong>{{ pax.birthdate | date('d F, Y') }}&nbsp;</strong>
+                              <br />
+                              {{ t('passport_id') }}
+                              &nbsp;
+                              <strong>[{{ pax.documenttype | upper }}] {{ pax.documentnumber }}</strong>
+                            </span>
+                            <br style='line-height: 20.7999992370605px;' />
+                            <span style='line-height:20.7999992370605px'>
+                              {{ t('country_of_nationality') }}
+                            </span>
+                            <span style='line-height:20.7999992370605px'>:&nbsp;</span>
+                            <strong style='line-height:20.7999992370605px'>{{ pax.country['label_' + lang] }} ({{ pax.country.slug }})</strong>
+                            <br style='line-height: 20.7999992370605px;' />
+                            <br style='line-height: 20.7999992370605px;' />
                           {% endfor %}
                         {% endfor %}
                       </td>

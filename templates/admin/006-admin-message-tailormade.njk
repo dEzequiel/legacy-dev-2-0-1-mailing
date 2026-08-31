@@ -1,110 +1,55 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
-            <tr>
-                <td valign="top" class="headerContainer">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-                                    
-                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                        <tbody>
-										<tr>
-                                            
-                                            <td valign="top" class="mcnTextContent" style="padding: 9px 18px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">
-                                                &nbsp;
-                                                <h1>{{ t('new_message_for_your_tailormade', { code: request.code }) }}</h1>
-                                                <p>
-                                                {{ t('agency') }}: <strong>{{ affiliate.company.name }}</strong>
-                                                <br/>
-                                                {{ t('pax_group_name') }} <strong>{{ request.title }}</strong>
-                                                </p>
-                                                <p><strong>{{ t('email') }} </strong> {{ affiliate.contact.bookingContact.email }}</p>												
-                                            </td>
-                                        </tr>
-										<tr>
-											<td valign="top" class="mcnBoxedTextBlockInner">
-                                    
-												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextContentContainer">
-													<tbody><tr>
-                                            
-														<td style="padding-top:9px; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-                                            
-															<table border="0" cellpadding="5" cellspacing="0" class="mcnTextContentContainer" width="100%" style="background-color: #FCF8E3;">
-																<tbody>
-																<tr>
-																	<td valign="top" class="mcnTextContent" style="text-align: left;">
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN HEADER // -->
+      <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='headerContainer' valign='top'>
+            {% call textBlock('100%') %}
+              &nbsp;
+              <h1>
+                {{ t('new_message_for_your_tailormade', { code: request.code }) }}
+              </h1>
+              <p>
+                {{ t('agency') }}:<strong>{{ affiliate.company.name }}</strong>
+                <br />
+                {{ t('pax_group_name') }}
+                <strong>{{ request.title }}</strong>
+              </p>
+              <p><strong>{{ t('email') }}</strong> {{ affiliate.contact.bookingContact.email }}</p>
+            {% endcall %}
 
-																		<table border="0" cellpadding="5" cellspacing="0"  class="mcnTextContentContainer">
-																			<tbody>
-																				<tr>
-																					<td width="50" valign="top" align="center">
+            {% include "../partials/chat-message.njk" %}
 
-																						&nbsp;<img height="36" src="{{ content.from.avatarimg }}" style="height: 36px; width: 36px;" width="36">
-																					</td>
-																					<td>
-																						<strong style="line-height: 120%">{{ content.from.name }}:</strong><br>
-																						<em style="color:#999999">"{{ content.message }}"</em>
-
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</td>
-																</tr>
-													</tbody>
-												</table>
-											</td>
-                                        </tr>
-										<tr>
-                                                <td valign="top" class="mcnTextBlockInner">
-													<!-- TAILOR MADE DETAILS // -->
-													{% include "../partials/tailormade.njk" %}
-                                                </td>
-                                       </tr>
-                                    </tbody></table>
-                                    
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
+            <!-- TAILOR MADE DETAILS // -->
+            {% include "../partials/tailormade.njk" %}
+          </td>
+        </tr>
+      </table>
+      <!-- // END HEADER -->
     </td>
-</tr>
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-
-
-                                <br />
-                                    <!-- BEGIN Call to action -->
-                                    {% if not ca %}
-                                    {% set ca = { txt: t('go_to_request'), url: url } %}
-                                    {% endif %}
-                                    {% include "../partials/call-to-action.njk" %}
-                                    <!-- END Call to action -->
-
-                                    <br>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END BODY -->
+  </tr>
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN BODY // -->
+      <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='bodyContainer' valign='top'>
+            <br />
+            <!-- BEGIN Call to action -->
+            {% if not ca %}
+              {% set ca = { txt: t('go_to_request'), url: url } %}
+            {% endif %}
+            {% include "../partials/call-to-action.njk" %}
+            <!-- END Call to action -->
+            <br />
+          </td>
+        </tr>
+      </table>
+      <!-- // END BODY -->
     </td>
-</tr>
+  </tr>
 {% endblock %}

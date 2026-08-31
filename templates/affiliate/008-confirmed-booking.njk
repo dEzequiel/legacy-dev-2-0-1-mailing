@@ -38,7 +38,9 @@
                             {% endif %}
 
                           </td>
+
                         </tr>
+
                         {% if booking.services != null and booking.services.length > 0 %}
                           <tr>
                             <td
@@ -89,8 +91,13 @@
                 </tr>
                 <!-- botones -->
                 <tr>
-                  <td>
-                    <p>{% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %} {% include "../partials/call-to-action.njk" %}</p>
+                  <td
+                    class='mcnTextContent'
+                    valign='top'
+                    style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                  >
+                    {% set ca = { txt: t('go_to_booking'), url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
+                    {% include "../partials/call-to-action.njk" %}
                   </td>
                 </tr>
                 <!-- check booking -->

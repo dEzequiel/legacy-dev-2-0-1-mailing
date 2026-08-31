@@ -1,4 +1,5 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
   <tr>
@@ -7,53 +8,32 @@
       <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='600'>
         <tr>
           <td class='headerContainer' valign='top'>
-            <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
-              <tbody class='mcnTextBlockOuter'>
-                <tr>
-                  <td
-                    class='mcnTextContent'
-                    valign='top'
-                    style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
-                  >
-                    <h1>{{ t('your_booking', { id: booking.idBooking }) }}</h1>
-                  </td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent' style='padding-left:18px;'>
-                    <b>{{ t('expediente') }} {{ affiliate.company.name }}:</b>
-                    {{ booking.idBookingExt }}
-                  </td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent' style='padding-left:18px;'>
-                    <b>{{ t('program') }}:</b>
-                    {{ booking.products[0]['title_' + lang] }}
-                  </td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent' style='padding-left:18px;'>
-                    <b>{{ t('travel_date') }}:</b>
-                    {{ booking.dates.start.day }}
-                    {{ booking.dates.start.monthname_en }}
-                    {{ booking.dates.start.year }}
-                  </td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent' style='padding-left:18px;'>
-                    <b>{{ t('paxes') }}:</b>
-                    {{ booking.paxes.length }}
-                  </td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent'>{% include "../partials/passengers-table-passports.njk" %}</td>
-                </tr>
-                <tr>
-                  <td class='mcnTextContent' style='padding: 9px 18px;'>
-                    <p>{{ t('passport_claim_text') | safe }}</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {% call textBlock('100%') %}
+              &nbsp;
+              <h1>
+                {{ t('your_booking', { id: booking.idBooking }) }}
+              </h1>
+              <br />
+              <b>{{ t('expediente') }} {{ affiliate.company.name }}:</b>
+              {{ booking.idBookingExt }}
+              <br />
+              <b>{{ t('program') }}:</b>
+              {{ booking.products[0]['title_' + lang] }}
+              <br />
+              <b>{{ t('travel_date') }}:</b>
+              {{ booking.dates.start.day }}
+              {{ booking.dates.start.monthname_en }}
+              {{ booking.dates.start.year }}
+              <br />
+              <b>{{ t('paxes') }}:</b>
+              {{ booking.paxes.length }}
+            {% endcall %}
+
+            {% include "../partials/passengers-table-passports.njk" %}
+
+            {% call textBlock('100%') %}
+              {{ t('passport_claim_text') | safe }}
+            {% endcall %}
           </td>
         </tr>
       </table>
@@ -67,30 +47,21 @@
       <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
         <tr>
           <td class='bodyContainer' valign='top'>
-            <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
-              <tbody class='mcnTextBlockOuter'>
-                <tr>
-                  <td class='mcnTextBlockInner' valign='top'>
-                    {% set ca ={
-                        txt: t(
-                          'go_to_booking'
-                        ),
-                        url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking
-                      }
-                    %}
+            {% call textBlock('100%') %}
+              {% set ca ={
+                  txt: t(
+                    'go_to_booking'
+                  ),
+                  url: 'http://yourttoo.com/edit/booking?code=' + booking.idBooking
+                }
+              %}
+              {% include "../partials/call-to-action.njk" %}
+              <!-- END Call to action -->
 
-                    {% include "../partials/call-to-action.njk" %}
-
-                    <!-- END Call to action -->
-
-                    <!-- BEGIN message // -->
-                    {% include "../partials/yto-team-thanks-message.njk" %}
-                    <!-- // END message -->
-
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              <!-- BEGIN message // -->
+              {% include "../partials/yto-team-thanks-message.njk" %}
+              <!-- // END message -->
+            {% endcall %}
           </td>
         </tr>
       </table>

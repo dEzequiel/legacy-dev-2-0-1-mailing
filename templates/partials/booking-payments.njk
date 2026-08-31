@@ -1,24 +1,14 @@
-<table
-  class="mcnCaptionBlock"
-  border="0"
-  cellpadding="0"
-  cellspacing="0"
-  width="100%"
->
-  <tbody class="mcnCaptionBlockOuter">
+<table class='mcnCaptionBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnCaptionBlockOuter'>
     <tr>
-      <td class="mcnTextContent" valign="top" style="padding: 9px 18px;">
-        <table
-          class="mcnCaptionBlock"
-          border="0" cellpadding="0"
-          cellspacing="0" width="100%"
-        >
+      <td class='mcnTextContent' valign='top' style='padding: 9px 18px;'>
+        <table class='mcnCaptionBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
           <tr>
-            <td style="padding-bottom: 9px;">
+            <td style='padding-bottom: 9px;'>
               <b>{{ t('payments_title') }}</b>
             </td>
           </tr>
-          <tr class="bg-soft" style="font-size: 12px;">
+          <tr class='bg-soft' style='font-size: 12px;'>
             <th>{{ t('receipt') }}</th>
             <th>{{ t('receiver') }}</th>
             <th>{{ t('date') }}</th>
@@ -28,20 +18,12 @@
           {% if booking.payments != null and booking.payments.length > 0 %}
             {% for pay in booking.payments %}
               {% if pay.paymenttarget != 'provider' %}
-                <tr class="itineraryrow title" style="font-size: 11px;">
-                  <td style="white-space: nowrap; padding-right: 10px;">
-                    {{ pay.transferid or pay.receiptnumber }}
-                  </td>
-                  <td style="white-space: nowrap; padding-right: 10px;">
-                    {{ pay.paymenttarget }}
-                  </td>
-                  <td style="white-space: nowrap; padding-right: 10px;">
-                    {{ pay.date | date('d-m-Y') }}
-                  </td>
-                  <td style="white-space: nowrap; padding-right: 10px;">
-                    {{ pay.paymentmethod }}
-                  </td>
-                  <td style="white-space: nowrap; padding-right: 10px;">
+                <tr class='itineraryrow title' style='font-size: 11px;'>
+                  <td style='white-space: nowrap; padding-right: 10px;'>{{ pay.transferid or pay.receiptnumber }}</td>
+                  <td style='white-space: nowrap; padding-right: 10px;'>{{ pay.paymenttarget }}</td>
+                  <td style='white-space: nowrap; padding-right: 10px;'>{{ pay.date | date('d-m-Y') }}</td>
+                  <td style='white-space: nowrap; padding-right: 10px;'>{{ pay.paymentmethod }}</td>
+                  <td style='white-space: nowrap; padding-right: 10px;'>
                     {{ pay.amount }}
                     {{ booking.pricing.currency.symbol }}
                   </td>
@@ -50,7 +32,7 @@
             {% endfor %}
           {% endif %}
           <tr>
-            <td colspan="5">
+            <td colspan='5'>
               <strong>
                 <hr />
               </strong>

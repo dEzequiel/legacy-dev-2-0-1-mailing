@@ -1,179 +1,179 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
-            <tr>
-                <td valign="top" class="headerContainer">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-                                    
-                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                        <tbody>
-                                        <tr>
-                                            <td valign="top" class="mcnTextContent" style="padding: 9px 18px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;">
-                                                &nbsp;
-                                                <h1>{{ t('new_booking_admin') }} {% if booking.status != 'onrequest' %}{{ t('confirmed') }}{% else %}{{ t('on_request') }}{% endif %} {{ booking.idBooking }} </h1>
-                                                {% if booking.query != null and booking.query.code %}
-                                                <br>
-                                                <h2 style="text-align:center;">{{ t('tailormade_booked') }}</h2>
-                                                {% endif %}
-												{% if booking.bookingmodel == 'whitelabel' %}<h2>(WHITELABEL)</h2>{% endif %}
-                                                {% include "../partials/agency.njk" %}
-                                            </td>
-                                        </tr>
-										<tr>
-											<td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-											<b>{{ t('agency') }}: </b> {{ booking.affiliate.company.name }} ({{ booking.affiliate.code }})</td>
-										</tr>
-										{% if booking.services != null and booking.services.length > 0 %}
-										<tr>
-											<td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-											{% set svc = booking.services[0] %}
-											{% set svcconfirmation = svc.confirmation %}
-											{{ t('flight_locator') }} <strong>{{svcconfirmation.AirBooking.BookingReference}}</strong> - {{ t('ticket_issue_deadline') }} <strong>{{svcconfirmation.AirBooking.TicketIssueDateLimit}}</strong>
-										</tr>
-                                        {% endif %}
-                                        
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                            <tbody>
-                                                <tr>
-                                                    <td valign="top" class="mcnTextBlockInner">
-                                                        {% include "../partials/booking.njk" %}
-                                                    </td>
-                                                </tr>
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN HEADER // -->
+      <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='headerContainer' valign='top'>
+            {% call textBlock('100%') %}
+              &nbsp;
+              <h1>
+                {{ t('new_booking_admin') }}
+                {% if booking.status != 'onrequest' %}
+                  {{ t('confirmed') }}
+                {% else %}
+                  {{ t('on_request') }}
+                {% endif %}
+                {{ booking.idBooking }}
+              </h1>
+              {% if booking.query != null and booking.query.code %}
+                <br />
+                <h2 style='text-align:center;'>
+                  {{ t('tailormade_booked') }}
+                </h2>
+              {% endif %}
+              {% if booking.bookingmodel == 'whitelabel' %}
+                <h2>(WHITELABEL)</h2>
+              {% endif %}
+              {% include "../partials/affiliate-information-simple.njk" %}
+            {% endcall %}
 
-                                                {% if booking.observations.observations != null %}
-                                                <tr>
-                                                    <td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                                        <b>{{ t('observations') }}:</b> {{ booking.observations.observations }}
-                                                    </td>
-                                                </tr>
-                                                {% endif %}
-                                                {% if product.admintsnotes != null %}
-                                                <tr>
-                                                    <td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                                        <b>{{ t('to_consider') }}</b> {{ product.admintsnotes }}
-                                                    </td>
-                                                </tr>
-                                                {% endif %}
-                                                <tr>
-                                                    <td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                                        <div class="price padded-l text-gray">
-                                                            <p>
-                                                                {% if booking.bookingmodel != 'standard' %}
-                                                                    <span><b>{{ t('net_agency') }}</b> <span class="yto-box-price">{{ booking.breakdown.agency.net }} {{ booking.pricing.currency.symbol }}</span></span>
-                                                                    {% if booking.services != null and booking.services.length > 0 %}
-                                                                    + 
-                                                                    <span><b>{{ t('net_flights') }}</b> <span class="yto-box-price">{{ booking.pricing.services.aerial.net }} {{ booking.pricing.currency.symbol }}</span></span>
-                                                                    ({{ t('total') }}: {{ booking.pricing.services.aerial.net + booking.breakdown.agency.net }})
-                                                                    {% endif %}
-                                                                {% else %}
-                                                                    <span><b>{{ t('net_agency_tour') }}</b> <span class="yto-box-price">{{ booking.price.segments.tour.totalNetPrice }} {{ booking.price.currency.symbol }}</span></span> <br /> 
-                                                                    <span><b>{{ t('net_agency_extras') }}</b> <span class="yto-box-price">{{ booking.price.segments.extra.totalNetPrice }} {{ booking.price.currency.symbol }}</span></span> <br />
-                                                                    <span><b>{{ t('net_agency_flights') }}</b> <span class="yto-box-price">{{ booking.price.segments.flight.totalNetPrice }} {{ booking.price.currency.symbol }}</span></span> <br />
-                                                                    ({{ t('total') }}: {{ booking.price.totalNetPrice }})
-                                                                {% endif %}
-                                                            </p>
-                                                            <p>
-                                                                <br />
-                                                                {% if booking.bookingmodel != 'standard' %}
-                                                                    <span><b>{{ t('net_agency_per_pax') }}</b></span>
-                                                                    <br />
-                                                                    {% for pricekey in booking.breakdown.roomsbyprice.travelersense.keys %}
-                                                                        <span>
-                                                                        {% set paxprice = booking.breakdown.roomsbyprice.travelersense[pricekey] %}
-                                                                        {% set hashrooms = { double: 'Doble', triple: 'Triple', single: 'Individual', quad: 'Cuadruple' } %}
-                                                                        <span>
-                                                                            {{ paxprice.paxes }} pax en {{ paxprice.room or paxprice.servicetype }} x 
-                                                                            <strong>{{ paxprice.price }} {{ booking.pricing.currency.symbol }}</strong>
-                                                                        </span>
-                                                                        </span><br />
-                                                                    {% endfor %}
-                                                                {% else %}
-                                                                    <span><b>{{ t('net_agency_per_pax') }}</b></span>
-                                                                    <br />
-                                                                    {% for priceItem in booking.price.bookingPriceItems %}
-                                                                        <span>
-                                                                        {% set paxprice = priceItem.agency.unitPriceBeforeMarkup %}
-                                                                        <span>
-                                                                            {{ priceItem.quantity }} {{ priceItem.name }} x 
-                                                                            <strong>{{ priceItem.agency.unitPriceBeforeMarkup }} {{ booking.price.currency.symbol }}</strong>
-                                                                        </span>
-                                                                        </span><br />
-                                                                    {% endfor %}
-                                                                {% endif %}
-
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                                                            <tbody class="mcnTextBlockOuter">
-                                                                <tr>
-                                                                    <td valign="top" class="mcnTextContent" style="padding-right: 18px; padding-bottom: 9px;">
-                                                                        {% include "../partials/holder-passengers.njk" %}
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <p>{{ t('payment_mode') }} <strong>{% if booking.paymentmodel.indexOf('split') >= 0 %} {{ t('installments') }} {% else %} 100% {% endif %}</strong></p>
-                                                        <p>{{ t('transfers') }} <strong>{{ booking.meetingdata }}</strong></p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-									
-                                    </tbody></table>
-                                    
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
+            {% if booking.services != null and booking.services.length > 0 %}
+              {% set svc = booking.services[0] %}
+              {% set svcconfirmation = svc.confirmation %}
+              {% call textBlock('100%') %}
+                {{ t('flight_locator') }}
+                <strong>
+                  {{ svcconfirmation.AirBooking.BookingReference }}
+                </strong>
+                -
+                {{ t('ticket_issue_deadline') }}
+                <strong>
+                  {{ svcconfirmation.AirBooking.TicketIssueDateLimit }}
+                </strong>
+              {% endcall %}
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+      <!-- // END HEADER -->
     </td>
-</tr>
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
-            <tr>
-                <td valign="top" class="bodyContainer">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-                                    
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                        <tbody class="mcnTextBlockOuter">
-                            <tr>
-                                <td valign="top" class="mcnTextBlockInner">
-                                <br />
-                                    {% set ca = {txt: t('go_to_booking'), url: 'https://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
-                                    {% include "../partials/call-to-action.njk" %}
-                                    <!-- END Call to action -->       
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END BODY -->
+  </tr>
+
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN BODY // -->
+      <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='bodyContainer' valign='top'>
+            {% include "../partials/admin-affiliate-booking.njk" %}
+
+            {% include "../partials/booking-dmc-observations.njk" %}
+
+            {% if product.admintsnotes != null %}
+              {% call textBlock('100%') %}
+                <b>
+                  {{ t('to_consider') }}
+                </b>
+                {{ product.admintsnotes }}
+              {% endcall %}
+            {% endif %}
+
+            {% call textBlock('100%') %}
+              <div class='price padded-l text-gray'>
+                <p>
+                  {% if booking.bookingmodel != 'standard' %}
+                    <span>
+                      <b>{{ t('net_agency') }}</b>
+                      <span class='yto-box-price'>{{ booking.breakdown.agency.net }} {{ booking.pricing.currency.symbol }}</span>
+                    </span>
+                    {% if booking.services != null and booking.services.length > 0 %}
+                      +
+                      <span>
+                        <b>{{ t('net_flights') }}</b>
+                        <span class='yto-box-price'>{{ booking.pricing.services.aerial.net }} {{ booking.pricing.currency.symbol }}</span>
+                      </span>
+                      (
+                      {{ t('total') }}
+                      :
+                      {{ booking.pricing.services.aerial.net + booking.breakdown.agency.net }}
+                      )
+                    {% endif %}
+                  {% else %}
+                    <span>
+                      <b>{{ t('net_agency_tour') }}</b>
+                      <span class='yto-box-price'>{{ booking.price.segments.tour.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+                    </span>
+                    <br />
+                    <span>
+                      <b>{{ t('net_agency_extras') }}</b>
+                      <span class='yto-box-price'>{{ booking.price.segments.extra.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+                    </span>
+                    <br />
+                    <span>
+                      <b>{{ t('net_agency_flights') }}</b>
+                      <span class='yto-box-price'>{{ booking.price.segments.flight.totalNetPrice }} {{ booking.price.currency.symbol }}</span>
+                    </span>
+                    <br />
+                    (
+                    {{ t('total') }}
+                    :
+                    {{ booking.price.totalNetPrice }}
+                    )
+                  {% endif %}
+                </p>
+                <p>
+                  <br />
+                  {% if booking.bookingmodel != 'standard' %}
+                    <span><b>{{ t('net_agency_per_pax') }}</b></span>
+                    <br />
+                    {% for pricekey in booking.breakdown.roomsbyprice.travelersense.keys %}
+                      {% set paxprice = booking.breakdown.roomsbyprice.travelersense[pricekey] %}
+                      {% set hashrooms = { double: 'Doble', triple: 'Triple', single: 'Individual', quad: 'Cuadruple' } %}
+                      <span>
+                        {{ paxprice.paxes }}
+                        pax en
+                        {{ paxprice.room or paxprice.servicetype }}
+                        x
+                        <strong>{{ paxprice.price }} {{ booking.pricing.currency.symbol }}</strong>
+                      </span>
+                      <br />
+                    {% endfor %}
+                  {% else %}
+                    <span><b>{{ t('net_agency_per_pax') }}</b></span>
+                    <br />
+                    {% for priceItem in booking.price.bookingPriceItems %}
+                      <span>
+                        {{ priceItem.quantity }}
+                        {{ priceItem.name }}
+                        x
+                        <strong>{{ priceItem.agency.unitPriceBeforeMarkup }} {{ booking.price.currency.symbol }}</strong>
+                      </span>
+                      <br />
+                    {% endfor %}
+                  {% endif %}
+                </p>
+              </div>
+            {% endcall %}
+
+            {% include "../partials/passengers-table.njk" %}
+            {% call textBlock('100%') %}
+              <p>
+                {{ t('payment_mode') }}
+                <strong>
+                  {% if booking.paymentmodel.indexOf('split') >= 0 %}
+                    {{ t('installments') }}
+                  {% else %}
+                    100%
+                  {% endif %}
+                </strong>
+              </p>
+              <p>{{ t('transfers') }} <strong>{{ booking.meetingdata }}</strong></p>
+            {% endcall %}
+
+            {% include "../partials/booking-transfers.njk" %}
+
+            <br />
+            {% set ca = {txt: t('go_to_booking'), url: 'https://yourttoo.com/edit/booking?code=' + booking.idBooking } %}
+            {% include "../partials/call-to-action.njk" %}
+            <!-- END Call to action -->
+          </td>
+        </tr>
+      </table>
+      <!-- // END BODY -->
     </td>
-</tr>
+  </tr>
 {% endblock %}

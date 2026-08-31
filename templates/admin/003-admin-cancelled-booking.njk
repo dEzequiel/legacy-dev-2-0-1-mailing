@@ -1,87 +1,77 @@
 {% extends '../layouts/yto-layout.njk' %}
+{% from "../partials/text-block.njk" import textBlock %}
 
 {% block body %}
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN HEADER // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
-            <tr>
-                <td valign="top" class="headerContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                    <tbody class="mcnTextBlockOuter">
-                        <tr>
-                            <td valign="top" class="mcnTextBlockInner">
-                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextContentContainer">
-                                    <tbody>
-                                    <tr>  
-                                        <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                            &nbsp;
-                                        <h1>{{ t('booking_cancelled_admin', { id: booking.idBooking }) }}</h1>
-                                        {% include "../partials/agency.njk" %}
-                                        </td>
-                                    </tr>
-                                    <tr>                                    
-                                        <td valign="top" class="mcnTextBlockInner">
-                                            {% include "../partials/booking.njk" %}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END HEADER -->
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN HEADER // -->
+      <table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tr>
+          <td class='headerContainer' valign='top'>
+            {% call textBlock('100%') %}
+              &nbsp;
+              <h1>
+                {{ t('booking_cancelled_admin', { id: booking.idBooking }) }}
+              </h1>
+            {% endcall %}
+          </td>
+
+        </tr>
+        <tr>
+          <td class='headerContainer' valign='top'>{% include "../partials/admin-affiliate-booking.njk" %}</td>
+        </tr>
+      </table>
+      <!-- // END HEADER -->
     </td>
-</tr>
-<tr>
-    <td align="center" valign="top">
-        <!-- BEGIN BODY // -->
-        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
-            <tr>
-                <td valign="top" class="bodyContainer">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                <tbody class="mcnTextBlockOuter">
-                    <tr>
-                        <td valign="top" class="mcnTextBlockInner">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                            <tbody class="mcnTextBlockOuter">
-                                <tr>
-                                    <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-                                        {% include "../partials/holder-passengers.njk" %}
-                                    </td>
-                                </tr>
-								<tr>
-									<td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
-										{{ t('cancelled_success') }}<br />
-										{{ t('check_possible_fees') }}
-									</td>
-								</tr>
-                            </tbody>
-                        </table>
-                        <br>
-						
+  </tr>
+  <tr>
+    <td align='center' valign='top'>
+      <!-- BEGIN BODY // -->
+      <table id='templateBody' border='0' cellpadding='0' cellspacing='0' width='600'>
+        <tr>
+          <td class='bodyContainer' valign='top'>
+            <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+              <tbody class='mcnTextBlockOuter'>
+                <tr>
+                  <td class='mcnTextBlockInner' valign='top'>
+                    <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+                      <tbody class='mcnTextBlockOuter'>
+                        <tr>
+                          <td class='mcnTextContent' valign='top'>{% include "../partials/passengers-table.njk" %}</td>
+                        </tr>
+                        <tr>
+                          <td
+                            class='mcnTextContent'
+                            valign='top'
+                            style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                          >
+                            {{ t('cancelled_success') }}
+                            <br />
+                            {{ t('check_possible_fees') }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br />
+
                     <!-- BEGIN Call to action
                     http://www.yourttoo.com/affiliate/booking-detail?idBooking={{ booking.idBooking}}
                      -->
                     {% if ca == null or ca == undefined or ca == '' %}
-                    {% set ca = {txt: t('go_to_booking'), url: url} %}
+                      {% set ca = {txt: t('go_to_booking'), url: url} %}
                     {% endif %}
                     {% include "../partials/call-to-action.njk" %}
 
                     <!-- END Call to action -->
 
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-                </td>
-            </tr>
-        </table>
-        <!-- // END BODY -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- // END BODY -->
     </td>
-</tr>
+  </tr>
 {% endblock %}

@@ -1,0 +1,10 @@
+{% if role == 'admin' %}
+  <p>
+    {{ t('agency') }}:<strong>{{ booking.affiliate.company.name }}</strong>
+    <br />
+    {{ t('agency_file') }}:<strong>{{ booking.idBookingExt }}</strong>
+  </p>
+{% endif %}
+{% if role == 'affiliate' %}
+  <p>{{ t('expediente') }}: {{ booking.idBookingExt }}</p>
+{% endif %}

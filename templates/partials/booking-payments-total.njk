@@ -1,28 +1,38 @@
-<table align="right" border="0" cellpadding="0" cellspacing="0" width="282" class="mcnTextContentContainer">
+<table class='mcnTextContentContainer' align='right' border='0' cellpadding='0' cellspacing='0' width='282'>
   <tbody>
-  <tr>
-    <td valign="top" class="mcnTextContent" style="padding: 9px 18px 9px 0px; text-align: left;">
+    <tr>
+      <td class='mcnTextContent' valign='top' style='padding: 9px 18px 9px 0px; text-align: left;'>
 
-      <h3 class="null" style="text-align: right;">{{ t('total') }}:&nbsp;{{ booking.pricing.amount | numberFractions }} {{ booking.pricing.currency.symbol }}</h3>
+        <h3 class='null' style='text-align: right;'>
+          {{ t('total') }}
+          :&nbsp;
+          {{ booking.pricing.amount | numberFractions }}
+          {{ booking.pricing.currency.symbol }}
+        </h3>
 
+        <div style='text-align: right;'>
 
-      <div style="text-align: right;">
+          {# ha pagado el 100 en un pago #}
+          {% if booking.paymentmodel == 'tpv-100' or booking.payments.length > 1 %}
+            {{ t('paid_100') }}
+            (
+            {{ booking.pricing.amount | numberFractions }}
+            {{ booking.pricing.currency.symbol }}
+            )
+            <br />
+            {# hay dos pagos #}
+          {% else %}
+            {{ t('paid_40') }}
+            (
+            {{ (booking.pricing.amount * 0.4) | numberFractions }}
+            {{ booking.pricing.currency.symbol }}
+            )
+            <br />
+          {% endif %}
 
-        {# ha pagado el 100 en un pago #}
-        {% if booking.paymentmodel == 'tpv-100' or booking.payments.length > 1 %}
-        {{ t('paid_100') }}
-        ({{ booking.pricing.amount | numberFractions }} {{ booking.pricing.currency.symbol }} )
-        <br/>
-        {# hay dos pagos #}
-        {% else %}
-        {{ t('paid_40') }}
-        ({{ (booking.pricing.amount * 0.4) | numberFractions }} {{ booking.pricing.currency.symbol }} )
-        <br/>
-        {% endif %}
-
-        <strong>{{ t('with_credit_card') }}</strong>
-      </div>
-    </td>
-  </tr>
+          <strong>{{ t('with_credit_card') }}</strong>
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>

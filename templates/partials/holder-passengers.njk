@@ -1,20 +1,21 @@
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextContent" style="padding-right: 18px;">
-                    <br style="line-height: 20.7999992370605px;" />
-                    {% for pax in booking.paxes %}
-                        <strong style="line-height:20.7999992370605px">
-                            {{ t('passenger') }} {{ loop.index }}
-                            {% if pax.holder == true %}
-                             - {{ t('booking_holder') }}
-                            {% endif %}
-                        </strong>
-                        <br style="line-height: 20.7999992370605px;" />
-                        <span style="line-height:20.7999992370605px">{{ pax.lastname }}&nbsp;{{ pax.name }} </span>
-                        <br />
-                    {% endfor %}
-            </td>
-        </tr>
-    </tbody>
+<table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+  <tbody class='mcnTextBlockOuter'>
+    <tr>
+      <td class='mcnTextContent' valign='top' style='padding-right: 18px;'>
+        <br style='line-height: 20.7999992370605px;' />
+        {% for pax in booking.paxes %}
+          <strong style='line-height:20.7999992370605px'>
+            {{ t('passenger') }}
+            {{ loop.index }}
+            {% if pax.holder == true %}
+              - {{ t('booking_holder') }}
+            {% endif %}
+          </strong>
+          <br style='line-height: 20.7999992370605px;' />
+          <span style='line-height:20.7999992370605px'>{{ pax.lastname }}&nbsp;{{ pax.name }}</span>
+          <br />
+        {% endfor %}
+      </td>
+    </tr>
+  </tbody>
 </table>

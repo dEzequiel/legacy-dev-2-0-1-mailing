@@ -1,28 +1,38 @@
-<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+<table id='templateHeader' border='0' cellpadding='0' cellspacing='0' width='600'>
   <tr>
-    <td valign="top" class="headerContainer">
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-        <tbody class="mcnTextBlockOuter">
+    <td class='headerContainer' valign='top'>
+      <table class='mcnTextBlock' border='0' cellpadding='0' cellspacing='0' width='100%'>
+        <tbody class='mcnTextBlockOuter'>
           <tr>
-            <td valign="top" class="mcnTextBlockInner">
-              <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer">
+            <td class='mcnTextBlockInner' valign='top'>
+              <table
+                class='mcnTextContentContainer'
+                align='left'
+                border='0'
+                cellpadding='0'
+                cellspacing='0'
+                width='600'
+              >
                 <tbody>
                   <tr>
-                    <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                    <td
+                      class='mcnTextContent'
+                      valign='top'
+                      style='padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;'
+                    >
                       &nbsp;
-                        <h1>{{ t('new_white_label_affiliate_booking') }}</h1>
-                        <br/>
-                        <span style="background-color: #f1f1f1; display: block; padding: 10px;">
-                          {{ t('product') }}: <a href="http://openmarket.travel/dmcproduct/{{ booking.products[0].code }}" target="_blank">{{ products[0].name }} ({{ products[0].categoryname['label_' + lang] }}) - {{ products[0].code }}</a>
-                          <br />
-                          {{ t('dmc_label') }}
-                            <a href="http://openmarket.travel/dmc/{{ booking.dmc.code }}" target="_blank">
-                              {{ booking.dmc.name }} - {{ booking.dmc.code }}
-                            </a>
-                          <br />
-                          {{ t('booking_label') }} <a>{{ booking.idBooking }}</a>
-                        </span>
-                        <br/>
+                      <h1>{{ t('new_white_label_affiliate_booking') }}</h1>
+                      <br />
+                      <span style='background-color: #f1f1f1; display: block; padding: 10px;'>
+                        {{ t('product') }}:<a href='http://openmarket.travel/dmcproduct/{{ booking.products[0].code }}' target='_blank'>{{ products[0].name }} ({{ products[0].categoryname['label_' + lang] }}) - {{ products[0].code }}</a>
+                        <br />
+                        {{ t('dmc_label') }}
+                        <a href='http://openmarket.travel/dmc/{{ booking.dmc.code }}' target='_blank'>{{ booking.dmc.name }} - {{ booking.dmc.code }}</a>
+                        <br />
+                        {{ t('booking_label') }}
+                        <a>{{ booking.idBooking }}</a>
+                      </span>
+                      <br />
                     </td>
                   </tr>
                 </tbody>
