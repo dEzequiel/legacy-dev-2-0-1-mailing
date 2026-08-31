@@ -56,11 +56,25 @@
                         <tr>
                             <td class="mcnTextContent" style="padding-left:18px;">
                                 <b>{{ t('room_types') }}</b><br />
-                                {% if b.roomCounts.single > 0 %}{{ t('single_rooms', { n: b.roomCounts.single }) }}{% endif %}
-                                {% if b.roomCounts.double > 0 %}{{ t('double_rooms', { n: b.roomCounts.double }) }}{% endif %}
-                                {% if b.roomCounts.twin > 0 %}{{ t('twin_rooms', { n: b.roomCounts.twin }) }}{% endif %}
-                                {% if b.roomCounts.triple > 0 %}{{ t('triple_rooms', { n: b.roomCounts.triple }) }}{% endif %}
-                                {% if b.roomCounts.quad > 0 %}{{ t('quad_rooms', { n: b.roomCounts.quad }) }}{% endif %}
+                                {% if b.roomCounts.single > 0 %}
+                                    {{ t('single_rooms', { n: b.roomCounts.single }) }}<br />
+                                {% endif %}
+
+                                {% if b.roomCounts.double > 0 %}
+                                    {{ t('double_rooms', { n: b.roomCounts.double }) }}<br />
+                                {% endif %}
+
+                                {% if b.roomCounts.twin > 0 %}
+                                    {{ t('twin_rooms', { n: b.roomCounts.twin }) }}<br />
+                                {% endif %}
+                                
+                                {% if b.roomCounts.triple > 0 %}
+                                    {{ t('triple_rooms', { n: b.roomCounts.triple }) }}<br />
+                                {% endif %}
+
+                                {% if b.roomCounts.quad > 0 %}
+                                    {{ t('quad_rooms', { n: b.roomCounts.quad }) }}<br />
+                                {% endif %}
                             </td>
                         </tr>
                     </tbody>
