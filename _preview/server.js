@@ -96,7 +96,12 @@ function enrichBooking(booking) {
 function buildContext() {
   const dir = path.join(ROOT, 'datadummy');
   const ctx = {
-    adjustForTimezone: (d) => d,
+    adjustForTimezone: (d, offset) => {
+      const date = d instanceof Date ? d : new Date(d);
+      if (isNaN(date.getTime())) return d;
+      const mins = Number(offset) || 0;
+      return new Date(date.getTime() - mins * 60000);
+    },
     pad: (n, w) => String(n).padStart(w, '0'),
     enrichBooking,
   };
